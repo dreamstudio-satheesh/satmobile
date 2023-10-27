@@ -13,14 +13,10 @@ class CategoryProducts extends Component
     public $selectedCategory = null;
     public $quantities = [];  // New associative array for product quantities
 
-    public function mount($products)
+    public function mount()
     {
         // Set the selectedCategory to the ID of the first category
         $this->selectedCategory = Category::first()->id ?? null;
-
-        foreach ($products as $product) {
-            $this->quantities[$product->id] = 1;  // Set default quantity to 1
-        }
     }
 
     public function render()
@@ -30,6 +26,12 @@ class CategoryProducts extends Component
 
         if ($this->selectedCategory) {
             $products = Product::where('category_id', $this->selectedCategory)->get();
+        }
+
+        foreach ($products as $product) {
+            if (!isset($this->quantities[$product->id])) {
+                $this->quantities[$product->id] = 1;
+            }
         }
 
         return view('livewire.category-products', [
