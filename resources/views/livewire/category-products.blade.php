@@ -44,7 +44,7 @@
                                 <!-- Wishlist Button--><a class="wishlist-btn" href="#"><i
                                         class="fa-solid fa-heart">
                                     </i></a>
-                                <!-- Thumbnail --><a class="product-thumbnail d-block" wire:click="addToCart({{ $product->id }}) href="">
+                                <!-- Thumbnail --><a class="product-thumbnail d-block" wire:click="addToCart({{ $product->id }})>
 
                                     @if (!empty($product->getFirstMediaUrl('products')))
                                         @php
