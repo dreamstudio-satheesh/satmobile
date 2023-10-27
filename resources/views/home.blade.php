@@ -59,7 +59,7 @@
                     quantity: productQuantity
                 };
 
-                console.JSON(product);
+                console.log(product);
 
                 // Handle adding the product to the cart or perform any other actions
                 // Get the current cart from localStorage (if it exists)
@@ -76,7 +76,7 @@
                 // Save the cart to localStorage
                 localStorage.setItem('cart', JSON.stringify(cart));
 
-                consol.log('cart list);
+                console.log('cart list);
                 //now console log the cart
                 console.log(cart);
 
