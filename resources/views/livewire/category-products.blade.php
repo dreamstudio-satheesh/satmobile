@@ -44,8 +44,7 @@
                                 <!-- Wishlist Button--><a class="wishlist-btn" href="#"><i
                                         class="fa-solid fa-heart">
                                     </i></a>
-                                <!-- Thumbnail --><a class="product-thumbnail d-block"
-                                    wire:click="addToCart({{ $product->id }})">
+                                <!-- Thumbnail --><a class="product-thumbnail d-block" href="" >
 
                                     @if (!empty($product->getFirstMediaUrl('products')))
                                         @php
@@ -66,7 +65,7 @@
                                     <div class="order-plus-minus d-flex align-items-center">
                                         <div class="quantity-button-handler">-</div>
                                         <input class="form-control cart-quantity-input" type="text" step="1"
-                                            name="quantity" wire:model="quantities.{{ $product->id }}">
+                                            name="quantity" value="1">
                                         <div class="quantity-button-handler">+</div>
                                     </div>
 
@@ -80,13 +79,7 @@
                     </div>
                 @endforeach
 
-                <script>
-                    document.addEventListener('livewire:initialized', () => {
-                        @this.on('productAddedToCart', (event) => {
-                            alert('Product added to cart!');
-                        });
-                    });
-                </script>
+               
             </div>
         </div>
     </div>
