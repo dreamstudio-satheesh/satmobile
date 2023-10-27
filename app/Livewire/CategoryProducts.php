@@ -34,6 +34,8 @@ class CategoryProducts extends Component
             }
         }
 
+        dd($this->quantities);
+
         return view('livewire.category-products', [
             'categories' => $categories,
             'products' => $products,
