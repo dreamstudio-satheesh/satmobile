@@ -44,7 +44,9 @@
                                 <!-- Wishlist Button--><a class="wishlist-btn" href="#"><i
                                         class="fa-solid fa-heart">
                                     </i></a>
-                                <!-- Thumbnail --><a class="product-thumbnail d-block" href="" >
+                                <!-- Thumbnail --><a class="product-thumbnail d-block" href="#"
+                                    data-product-id="{{ $product->id }}" data-product-name="{{ $product->name }}"
+                                    data-product-price="{{ $product->price }}">
 
                                     @if (!empty($product->getFirstMediaUrl('products')))
                                         @php
@@ -79,7 +81,7 @@
                     </div>
                 @endforeach
 
-               
+
             </div>
         </div>
     </div>
