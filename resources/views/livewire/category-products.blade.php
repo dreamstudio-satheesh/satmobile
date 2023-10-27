@@ -1,5 +1,4 @@
 <div>
-
     <!-- Product Catagories -->
     <div class="product-catagories-wrapper py-3">
         <div class="container">
