@@ -66,7 +66,7 @@ class CategoryProducts extends Component
          // Check if this product is already in the cart
          if (isset($cart[$productId])) {
              // Increment the quantity by the specified amount
-             $cart[$productId]['quantity'] += $this->quantity;
+             $cart[$productId]['quantity'] += $quantity;
          } else {
              // Add the new product to the cart
              $cart[$productId] = [
