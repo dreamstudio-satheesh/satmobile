@@ -70,6 +70,8 @@ class CategoryProducts extends Component
         ];
     }
 
+    dd($cart);
+
     // Update the cart session
     Session::put('cart', $cart);
         
