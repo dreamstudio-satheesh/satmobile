@@ -67,8 +67,7 @@
                                         <input class="form-control cart-quantity-input" type="text" step="1" name="quantity" value="1">
                                         <div class="quantity-button-handler">+</div>
                                       </div>
-                                      <!-- Add to Cart -->
-                                      <a class="btn btn-success btn-sm" href="#"><i class="fa-solid fa-plus"></i></a>
+                                     
 
                                 </div>
                                
