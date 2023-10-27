@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <!-- Search Form-->
 <div class="container">
   <div class="search-form pt-3 rtl-flex-d-row-r">
