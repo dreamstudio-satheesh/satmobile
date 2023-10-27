@@ -131,7 +131,7 @@
         </div>
     </div>
     <div class="page-content-wrapper">
-        <!-- Search Form-->
+        
         @yield('content')
 
 
