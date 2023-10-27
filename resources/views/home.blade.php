@@ -34,6 +34,8 @@
 
 @push('scripts')
 <script>
+
+document.addEventListener('DOMContentLoaded', function() {
     // Add a click event listener to all product-thumbnails
     document.querySelectorAll('.product-thumbnail').forEach(function (thumbnail) {
         thumbnail.addEventListener('click', function (event) {
@@ -84,6 +86,8 @@
             }
         });
     });
+
+});
 </script>
 
 
