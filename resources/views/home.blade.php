@@ -76,7 +76,7 @@
                 // Save the cart to localStorage
                 localStorage.setItem('cart', JSON.stringify(cart));
 
-
+                consol.log('cart list);
                 //now console log the cart
                 console.log(cart);
 
