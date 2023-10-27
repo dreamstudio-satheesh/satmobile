@@ -153,6 +153,7 @@
         <script src="js/no-internet.js"></script>
         <script src="js/active.js"></script>
         <script src="js/pwa.js"></script>
+        @stack('scripts')
 </body>
 
 </html>
