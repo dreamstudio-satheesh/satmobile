@@ -11,7 +11,7 @@ class ViewCart extends Component
 
     public function mount()
     {
-        $this->cart = Session::get('cart', []);
+        
     }
 
     public function render()
@@ -20,19 +20,5 @@ class ViewCart extends Component
         return view('livewire.view-cart');
     }
 
-    public function updateQuantity($productId, $newQuantity)
-    {
-        if (isset($this->cart[$productId])) {
-            $this->cart[$productId]['quantity'] = $newQuantity;
-            Session::put('cart', $this->cart);
-        }
-    }
-
-    public function removeFromCart($productId)
-    {
-        if (isset($this->cart[$productId])) {
-            unset($this->cart[$productId]);
-            Session::put('cart', $this->cart);
-        }
-    }
+   
 }

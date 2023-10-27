@@ -27,8 +27,7 @@ class CategoryProducts extends Component
         if ($this->selectedCategory) {
             $products = Product::where('category_id', $this->selectedCategory)->get();
         }
-
-      
+     
 
         return view('livewire.category-products', [
             'categories' => $categories,
@@ -41,43 +40,5 @@ class CategoryProducts extends Component
         $this->selectedCategory = $categoryId;
     }
 
-    public function addToCart($productId)
-    {
-    // Fetch the product details from the database
-    $product = Product::find($productId);
-
-    // Initialize the cart session if it doesn't exist
-    if (!Session::has('cart')) {
-        Session::put('cart', []);
-    }
-
-    // Get the current cart from the session
-    $cart = Session::get('cart');
-
-    // Get the quantity for this product from the quantities array
-    $quantity = isset($this->quantities[$productId]) ? $this->quantities[$productId] : 1;
-
-    // Check if this product is already in the cart
-    if (isset($cart[$productId])) {
-        // Increment the quantity by the specified amount
-        $cart[$productId]['quantity'] += $quantity;
-    } else {
-        // Add the new product to the cart
-        $cart[$productId] = [
-            'name' => $product->name,
-            'price' => $product->price,
-            'quantity' => $quantity,
-        ];
-    }
-
- 
-
-    // Update the cart session
-    Session::put('cart', $cart);
-        
-    dd(Session::get('cart'));
-        $this->dispatch('productAddedToCart');
-
-
-    }
+   
 }
