@@ -47,41 +47,35 @@ class CategoryProducts extends Component
 
     public function addToCart($productId)
     {
-        $quantity = isset($this->quantities[$productId]) ? $this->quantities[$productId] : 1;
+    // Fetch the product details from the database
+    $product = Product::find($productId);
 
-        // Fetch the product details from the database
-        $product = Product::find($productId);
+    // Initialize the cart session if it doesn't exist
+    if (!Session::has('cart')) {
+        Session::put('cart', []);
+    }
 
-        // Initialize the cart session if it doesn't exist
-        if (!Session::has('cart')) {
-            Session::put('cart', []);
-        }
+    // Get the current cart from the session
+    $cart = Session::get('cart');
 
-         // Get the current cart from the session
-         $cart = Session::get('cart');
+    // Get the quantity for this product from the quantities array
+    $quantity = isset($this->quantities[$productId]) ? $this->quantities[$productId] : 1;
 
-          // Get the quantity for this product from the quantities array
-         $quantity = isset($this->quantities[$productId]) ? $this->quantities[$productId] : 1;
+    // Check if this product is already in the cart
+    if (isset($cart[$productId])) {
+        // Increment the quantity by the specified amount
+        $cart[$productId]['quantity'] += $quantity;
+    } else {
+        // Add the new product to the cart
+        $cart[$productId] = [
+            'name' => $product->name,
+            'price' => $product->price,
+            'quantity' => $quantity,
+        ];
+    }
 
-         // Check if this product is already in the cart
-         if (isset($cart[$productId])) {
-             // Increment the quantity by the specified amount
-             $cart[$productId]['quantity'] += $quantity;
-         } else {
-             // Add the new product to the cart
-             $cart[$productId] = [
-                 'name' => $product->name,
-                 'price' => $product->price,
-                 'quantity' => $quantity,
-             ];
-         }
-         dd($cart[$productId]);
- 
-         // Update the cart session
-         Session::put('cart', $cart);
-
-
-        // Optionally, you can show a message or perform a redirect
+    // Update the cart session
+    Session::put('cart', $cart);
         
         $this->dispatch('productAddedToCart');
 
