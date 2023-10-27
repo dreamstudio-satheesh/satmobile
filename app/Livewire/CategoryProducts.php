@@ -75,6 +75,7 @@ class CategoryProducts extends Component
                  'quantity' => $quantity,
              ];
          }
+         dd($cart[$productId]);
  
          // Update the cart session
          Session::put('cart', $cart);
