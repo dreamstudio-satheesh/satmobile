@@ -2,13 +2,15 @@
 
 namespace App\Livewire;
 
+use App\Models\Product;
 use Livewire\Component;
 use App\Models\Category;
-use App\Models\Product;
+use Illuminate\Support\Facades\Session;
 
 class CategoryProducts extends Component
 {
     public $selectedCategory = null;
+    public $quantities = [];  // New associative array for product quantities
 
     public function mount()
     {
@@ -34,5 +36,45 @@ class CategoryProducts extends Component
     public function showProducts($categoryId)
     {
         $this->selectedCategory = $categoryId;
+    }
+
+    public function addToCart($productId)
+    {
+        $quantity = isset($this->quantities[$productId]) ? $this->quantities[$productId] : 1;
+
+        // Fetch the product details from the database
+        $product = Product::find($productId);
+
+        // Initialize the cart session if it doesn't exist
+        if (!Session::has('cart')) {
+            Session::put('cart', []);
+        }
+
+         // Get the current cart from the session
+         $cart = Session::get('cart');
+
+         // Check if this product is already in the cart
+         if (isset($cart[$productId])) {
+             // Increment the quantity by the specified amount
+             $cart[$productId]['quantity'] += $this->quantity;
+         } else {
+             // Add the new product to the cart
+             $cart[$productId] = [
+                 'name' => $product->name,
+                 'price' => $product->price,
+                 'quantity' => $this->quantity,
+             ];
+         }
+ 
+         // Update the cart session
+         Session::put('cart', $cart);
+
+
+        // Optionally, you can show a message or perform a redirect
+        $this->emit('productAddedToCart');  // Emitting an event to show a message on the frontend
+
+
+
+
     }
 }
