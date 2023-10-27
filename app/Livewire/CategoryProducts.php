@@ -5,14 +5,11 @@ namespace App\Livewire;
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\Category;
-use Illuminate\Support\Facades\Session;
 
 
 class CategoryProducts extends Component
 {
     public $selectedCategory = null;
-    public $quantities = [];  // New associative array for product quantities
-
     public function mount()
     {
         // Set the selectedCategory to the ID of the first category
