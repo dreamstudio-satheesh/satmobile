@@ -31,4 +31,4 @@ Auth::routes([
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/cart.html', [App\Http\Controllers\HomeController::class, 'index'])->name('cart');
+Route::get('/cart.html', [App\Http\Controllers\HomeController::class, 'cart'])->name('cart');
