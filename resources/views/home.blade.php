@@ -59,10 +59,28 @@
                     quantity: productQuantity
                 };
 
-                // Handle adding the product to the cart or perform any other actions
-                // ...
+                console.JSON(product);
 
-                // You can also update a cart UI element here if needed
+                // Handle adding the product to the cart or perform any other actions
+                // Get the current cart from localStorage (if it exists)
+                var cart = JSON.parse(localStorage.getItem('cart')) || {};
+                // Check if the product already exists in the cart
+                if (cart.hasOwnProperty(productId)) {
+                    // Product already exists, increase the quantity
+                    cart[productId].quantity += productQuantity;
+                } else {
+                    // Product does not exist, add the product
+                    cart[productId] = product;
+                }
+
+                // Save the cart to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+
+                //now console log the cart
+                console.log(cart);
+
+                
             }
         });
     });
