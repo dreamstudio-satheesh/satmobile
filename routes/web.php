@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 route::get('/settings.html', function(){
     return view('settings');
-});
+})->middleware(Authenticate::class);
 
 route::get('/offline.html', function(){
     return view('offline');
