@@ -79,8 +79,10 @@
                 @endforeach
 
                 <script>
-                    window.livewire.on('productAddedToCart', () => {
+                    document.addEventListener('livewire:initialized', () => {
+                    @this.on('productAddedToCart', (event) => {
                         alert('Product added to cart!');
+                    });
                     });
                 </script>
             </div>

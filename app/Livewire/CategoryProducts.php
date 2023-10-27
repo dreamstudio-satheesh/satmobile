@@ -81,9 +81,8 @@ class CategoryProducts extends Component
 
 
         // Optionally, you can show a message or perform a redirect
-        $this->emit('productAddedToCart');  // Emitting an event to show a message on the frontend
-
-
+        
+        $this->dispatch('productAddedToCart');
 
 
     }
