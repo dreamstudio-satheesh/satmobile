@@ -12,8 +12,7 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <table class="table mb-0">
-                    <tbody>
+                 <tbody>
                         @foreach($cart as $productId => $productDetails)
                             <tr>
                                 <td>{{ $productDetails['name'] }}</td>
