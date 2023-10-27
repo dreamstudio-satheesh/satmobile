@@ -2,14 +2,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, shrink-to-fit=no">
-    <meta name="description" content="SAT - Multipurpose Ecommerce Mobile HTML Template">
+    <meta name="description" content="SAT - Sweets Home">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#100DD1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <!-- The above tags *must* come first in the head, any other head content must come *after* these tags -->
     <!-- Title -->
-    <title>SAT - Multipurpose Ecommerce Mobile HTML Template</title>
+    <title>SAT - Sweets Home Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
     <link rel="apple-touch-icon" sizes="167x167" href="img/icons/icon-167x167.png">
     <link rel="apple-touch-icon" sizes="180x180" href="img/icons/icon-180x180.png">
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/brands.min.css">
