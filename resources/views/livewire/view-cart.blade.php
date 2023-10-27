@@ -3,6 +3,15 @@
     <div class="cart-wrapper-area py-3">
         <div class="cart-table card mb-3">
             <div class="table-responsive card-body">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 <table class="table mb-0">
                     <tbody>
                         @foreach($cart as $productId => $productDetails)
