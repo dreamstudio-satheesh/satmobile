@@ -3,6 +3,7 @@
     <div class="cart-wrapper-area py-3">
         <div class="cart-table card mb-3">
             <div class="table-responsive card-body">
+               <table class="table mb-0">
                 <thead>
                     <tr>
                         <th>Product</th>
