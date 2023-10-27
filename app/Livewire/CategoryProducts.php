@@ -60,6 +60,9 @@ class CategoryProducts extends Component
          // Get the current cart from the session
          $cart = Session::get('cart');
 
+          // Get the quantity for this product from the quantities array
+         $quantity = isset($this->quantities[$productId]) ? $this->quantities[$productId] : 1;
+
          // Check if this product is already in the cart
          if (isset($cart[$productId])) {
              // Increment the quantity by the specified amount
@@ -69,7 +72,7 @@ class CategoryProducts extends Component
              $cart[$productId] = [
                  'name' => $product->name,
                  'price' => $product->price,
-                 'quantity' => $this->quantity,
+                 'quantity' => $quantity,
              ];
          }
  
