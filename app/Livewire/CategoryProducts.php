@@ -28,13 +28,7 @@ class CategoryProducts extends Component
             $products = Product::where('category_id', $this->selectedCategory)->get();
         }
 
-        foreach ($products as $product) {
-            if (!isset($this->quantities[$product->id])) {
-                $this->quantities[$product->id] = 1;
-            }
-        }
-
-        dd($this->quantities);
+      
 
         return view('livewire.category-products', [
             'categories' => $categories,
