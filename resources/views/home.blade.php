@@ -45,7 +45,7 @@
             var productPrice = parseFloat(thumbnail.getAttribute('data-product-price'));
 
             // Identify the correct quantity input for this product
-            var quantityInput = document.querySelector('[data-product-id="' + productId + '"]');
+            var quantityInput = document.querySelector('[data-input-id="' + productId + '"]');
 
             // Check if the quantityInput is found
             if (quantityInput) {
