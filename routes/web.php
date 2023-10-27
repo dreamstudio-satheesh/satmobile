@@ -12,6 +12,16 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+route::get('/settings.html', function(){
+    return view('settings');
+});
+
+route::get('/offline.html', function(){
+    return view('offline');
+});
+
+
 route::get('/login.html', function(){
     return view('auth.login');
 });
