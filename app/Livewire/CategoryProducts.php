@@ -5,6 +5,9 @@ namespace App\Livewire;
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\Category;
+use Illuminate\Support\Facades\Session;
+
+
 
 class CategoryProducts extends Component
 {
