@@ -8,16 +8,19 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Session;
 
 
-
 class CategoryProducts extends Component
 {
     public $selectedCategory = null;
     public $quantities = [];  // New associative array for product quantities
 
-    public function mount()
+    public function mount($products)
     {
         // Set the selectedCategory to the ID of the first category
         $this->selectedCategory = Category::first()->id ?? null;
+
+        foreach ($products as $product) {
+            $this->quantities[$product->id] = 1;  // Set default quantity to 1
+        }
     }
 
     public function render()
