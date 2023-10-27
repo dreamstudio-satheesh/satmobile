@@ -43,38 +43,30 @@
             var productId = thumbnail.getAttribute('data-product-id');
             var productName = thumbnail.getAttribute('data-product-name');
             var productPrice = parseFloat(thumbnail.getAttribute('data-product-price'));
-            var productQuantity = parseInt(thumbnail.querySelector('.cart-quantity-input').value);
 
-            // Create a product object
-            var product = {
-                id: productId,
-                name: productName,
-                price: productPrice,
-                quantity: productQuantity
-            };
+            // Identify the correct quantity input for this product
+            var quantityInput = document.querySelector('[data-product-id="' + productId + '"]');
 
-            // Get the current cart from localStorage (if it exists)
-            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            // Check if the quantityInput is found
+            if (quantityInput) {
+                var productQuantity = parseInt(quantityInput.value);
 
-            // Check if the product is already in the cart
-            var existingProductIndex = cart.findIndex(function (item) {
-                return item.id === productId;
-            });
+                // Create a product object
+                var product = {
+                    id: productId,
+                    name: productName,
+                    price: productPrice,
+                    quantity: productQuantity
+                };
 
-            if (existingProductIndex !== -1) {
-                // If it is, update the quantity
-                cart[existingProductIndex].quantity += productQuantity;
-            } else {
-                // If not, add it to the cart
-                cart.push(product);
+                // Handle adding the product to the cart or perform any other actions
+                // ...
+
+                // You can also update a cart UI element here if needed
             }
-
-            // Store the updated cart back in localStorage
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-            // You can also update a cart UI element here if needed
         });
     });
 </script>
+
 
 @endpush

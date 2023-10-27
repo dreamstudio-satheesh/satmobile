@@ -67,7 +67,7 @@
                                     <div class="order-plus-minus d-flex align-items-center">
                                         <div class="quantity-button-handler">-</div>
                                         <input class="form-control cart-quantity-input" type="text" step="1"
-                                            name="quantity" value="1">
+                                            name="quantity" value="1" data-product-id="{{ $product->id }}">
                                         <div class="quantity-button-handler">+</div>
                                     </div>
 
