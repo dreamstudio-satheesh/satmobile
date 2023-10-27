@@ -26,7 +26,7 @@ route::get('/login.html', function(){
     return view('auth.login');
 });
 
-Route::get('/',  [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm']);
+
 Route::get('/logout',  [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 
 Auth::routes([
@@ -39,6 +39,8 @@ Auth::routes([
   
   ]);
 
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home.html', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
