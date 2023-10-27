@@ -75,7 +75,7 @@ class CategoryProducts extends Component
     // Update the cart session
     Session::put('cart', $cart);
         
-    dd($cart);
+    dd(Session::get('cart'));
         $this->dispatch('productAddedToCart');
 
 
