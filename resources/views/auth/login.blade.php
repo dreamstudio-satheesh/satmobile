@@ -25,7 +25,7 @@
     <link rel="apple-touch-icon" sizes="167x167" href="img/icons/icon-167x167.png">
     <link rel="apple-touch-icon" sizes="180x180" href="img/icons/icon-180x180.png">
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/brands.min.css">
