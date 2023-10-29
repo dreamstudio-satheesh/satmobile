@@ -111,8 +111,10 @@
 @push('styles')
 
 <style type="text/css">
-.product-card .active  {
-        border: 1px solid #7367F0;
+.product-card .active {
+    background-color: #f7f7f7; /* Example background color */
+    border: 2px solid #00a8e6; /* Example border color */
+    /* Add any other styling you want */
 }
 </style>
     
