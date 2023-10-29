@@ -193,6 +193,9 @@
 
             // Clear the cart from localStorage
             localStorage.removeItem('cart');
+
+             // Refresh the cart items count on the page
+             updateCartItemCountOnPage();
         }
     </script>
 
