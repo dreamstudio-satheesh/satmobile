@@ -1,7 +1,7 @@
 {
   "name": "SAT",
   "short_name": "SAT",
-  "start_url": "https://mobile.satsweets.com/login.html",
+  "start_url": "https://mobile.satsweets.com/",
   "display": "standalone",
   "background_color": "#100DD1",
   "theme_color": "#100DD1",
