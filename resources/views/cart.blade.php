@@ -67,9 +67,9 @@
                 var row = document.createElement('tr');
                 row.innerHTML = `
             <td>${productDetails.name}</td>
-            <td>${productDetails.price}</td>
+            <td>${productDetails.price}</td>                    
             <td>
-                <input type="number" min="1" value="${productDetails.quantity}" onchange="updateQuantity(${productId}, this.value)">
+                <div class="quantity"> <input class="qty-text" type="number" min="1" value="${productDetails.quantity}" onchange="updateQuantity(${productId}, this.value)"></div>
             </td>
             <td>${productDetails.price * productDetails.quantity}</td>
             <td>
