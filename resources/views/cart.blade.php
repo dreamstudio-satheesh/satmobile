@@ -240,11 +240,11 @@
                 event.preventDefault();
 
                 // Check if a customer is selected
-                if (!selectedCustomerId) {
+                if (selectedCustomerId === 'Select Customer') {
                     alert('Please select a customer first.');
                     return;
                 }
-                console.log(selectedCustomerId);
+               
                 // Retrieve the cart data from local storage
                 var cartData = JSON.parse(localStorage.getItem('cart')) || {};
 
