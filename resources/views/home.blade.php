@@ -58,7 +58,7 @@
                             quantity: productQuantity
                         };
 
-                        console.log(product);
+                        
 
                         // Handle adding the product to the cart or perform any other actions
                         // Get the current cart from localStorage (if it exists)
