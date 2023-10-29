@@ -2,10 +2,8 @@
 
 <head>
     <meta charset="utf-8">
-    {{-- <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, shrink-to-fit=no"> --}}
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, shrink-to-fit=no">
     <meta name="description" content="SAT - Sweets Home">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#100DD1">
