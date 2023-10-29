@@ -11,14 +11,6 @@ const precacheAssets = [
     '/offline.html'
 ];
 
-// Install Event
-/* self.addEventListener('install', function (event) {
-    event.waitUntil(
-        caches.open(staticCacheName).then(function (cache) {
-            return cache.addAll(precacheAssets);
-        })
-    );
-}); */
 
 // Install Event
 self.addEventListener('install', function (event) {
@@ -56,29 +48,6 @@ self.addEventListener('activate', function (event) {
 });
 
 // Fetch Event
-/* self.addEventListener('fetch', function (event) {
-    event.respondWith(
-        caches.match(event.request).then(cacheRes => {
-            return cacheRes || fetch(event.request).then(response => {
-                // Check if the response is valid before caching
-                if (response && response.status === 200) {
-                    return caches.open(dynamicCacheName).then(function (cache) {
-                        cache.put(event.request, response.clone());
-                        return response;
-                    });
-                } else {
-                    // Handle non-200 responses here
-                    return response;
-                }
-            }).catch(function() {
-                // Fallback Page, When No Internet Connection
-                return caches.match('/offline.html');
-            });
-        })
-    );
-});
- */
-
 self.addEventListener('fetch', function (event) {
     // Check if the request method is POST
     if (event.request.method === 'POST') {
