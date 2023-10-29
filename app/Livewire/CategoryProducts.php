@@ -10,6 +10,8 @@ use App\Models\Category;
 class CategoryProducts extends Component
 {
     public $selectedCategory = null;
+
+    public $search='';
     public function mount()
     {
         // Set the selectedCategory to the ID of the first category
