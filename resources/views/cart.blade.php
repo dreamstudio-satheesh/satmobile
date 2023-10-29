@@ -138,23 +138,28 @@
         });
 
 
-
-
-
-
-
-        // Function to update quantity
         function updateQuantity(productId, newQuantity) {
-            // Update the cartData object
-            cartData[productId].quantity = parseInt(newQuantity);
+            // Parse the new quantity as an integer
+            newQuantity = parseInt(newQuantity);
+
+            // Ensure that the new quantity is at least 1
+            if (newQuantity < 1) {
+                newQuantity = 1;
+            }
+
+            // Update the cartData object with the validated quantity
+            cartData[productId].quantity = newQuantity;
+
             // Call your backend to update the cart data as well
 
             // Re-render the cart items
             renderCartItems();
 
-            // Save the updated cartData to localStorage
+            // Save the
+             updated cartData to localStorage
             localStorage.setItem('cart', JSON.stringify(cartData));
         }
+
 
         // Function to remove a product from the cart
         function removeFromCart(productId) {
