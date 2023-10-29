@@ -4,7 +4,8 @@
         <div class="container">
             <div class="search-form pt-3 rtl-flex-d-row-r">
                 <form action="#" method="">
-                    <input class="form-control" type="text" wire:model.live="search" placeholder="Search in SAT">
+                    <input class="form-control" type="text" wire:model.live="search" placeholder="Search in SAT">                    
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>                    
                 </form>
                 <!-- Alternative Search Options -->
                 <div class="alternative-search-options">
@@ -18,7 +19,7 @@
             </div>
         </div>
 
-        
+
     <!-- Product Catagories -->
     <div class="product-catagories-wrapper py-3">
         <div class="container">
