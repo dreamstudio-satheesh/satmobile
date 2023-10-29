@@ -122,10 +122,12 @@
                 }
             }
 
+        });
+
+        // Use the DOMContentLoaded event to ensure the DOM is ready
+        document.addEventListener("DOMContentLoaded", function() {
             // Initial rendering of cart items
             renderCartItems();
-
-
         });
 
 
