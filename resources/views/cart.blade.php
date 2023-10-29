@@ -5,9 +5,10 @@
     <div class="container">
         <div class="search-form pt-3 rtl-flex-d-row-r">
             <select id="myDropdown" class="form-select" aria-label="Select Customer">
-                <option  selected>Select Customer</option>
+                <option selected>Select Customer</option>
                 @foreach ($customers as $customer)
-                <option value="{{ $customer->id }}">{{ $customer->name }} - {{ Str::limit( $customer->address, 20) }}</option>                                    
+                    <option value="{{ $customer->id }}">{{ $customer->name }} - {{ Str::limit($customer->address, 20) }}
+                    </option>
                 @endforeach
             </select>
         </div>
@@ -43,7 +44,7 @@
                 <div class="card-body d-flex align-items-center justify-content-between">
                     <button class="btn btn-danger" onclick="clearCart()">Clear All</button>
                     <h5 class="total-price mb-0"><span id="totalPrice">0.00</span></h5>
-                    <a class="btn btn-warning" href="checkout.html">Checkout Now</a>
+                    <a class="btn btn-warning" id="checkoutButton" href="#">Checkout Now</a>
 
                 </div>
             </div>
@@ -55,11 +56,11 @@
 @endsection
 
 @push('styles')
-<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 @endpush
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script>
         // Retrieve cart data from localStorage
         var cartData = JSON.parse(localStorage.getItem('cart')) || {};
@@ -195,9 +196,50 @@
         }
     </script>
 
+
+
     <script>
         $(document).ready(function() {
             $('#myDropdown').select2();
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Event listener for the "Checkout Now" button
+            document.getElementById('checkoutButton').addEventListener('click', function(event) {
+                event.preventDefault();
+
+                // Get the selected customer ID from the dropdown
+                var selectedCustomerId = $('#myDropdown').val();
+
+                // Retrieve the cart data from local storage
+                var cartData = JSON.parse(localStorage.getItem('cart')) || {};
+
+                // Create an object to hold the checkout data
+                var checkoutData = {
+                    customerId: selectedCustomerId,
+                    cartItems: cartData
+                };
+
+                // Send the checkout data to the server (You will need to implement this part)
+                // Example using AJAX:
+                $.ajax({
+                    url: '/checkout', // Replace with the actual URL for your server endpoint
+                    method: 'POST',
+                    data: JSON.stringify(checkoutData),
+                    contentType: 'application/json',
+                    success: function(response) {
+                        // Handle the server response here (e.g., display a success message)
+                        console.log('Checkout successful:', response);
+
+                        // Clear the cart after successful checkout
+                        clearCart();
+                    },
+                    error: function(error) {
+                        // Handle any errors from the server
+                        console.error('Checkout error:', error);
+                    }
+                });
+            });
         });
     </script>
 @endpush
