@@ -26,7 +26,7 @@
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/brands.min.css">
     <link rel="stylesheet" href="css/solid.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
