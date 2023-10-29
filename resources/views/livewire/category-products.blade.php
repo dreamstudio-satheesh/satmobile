@@ -11,7 +11,7 @@
                                     @if (!empty($category->getFirstMediaUrl('categories')))
                                         @php
                                             $image = $category->getFirstMediaUrl('categories', 'thumb');
-                                            $image = str_replace('https://app.satsweets.com', 'https://satsweets.com', $image);
+                                            $image = str_replace('https://mobile.satsweets.com', 'https://satsweets.com', $image);
                                         @endphp
                                         <img src="{{ $image }}">
                                     @else
@@ -51,7 +51,7 @@
                                     @if (!empty($product->getFirstMediaUrl('products')))
                                         @php
                                             $product_image = $product->getFirstMediaUrl('products', 'thumb');
-                                            $product_image = str_replace('https://app.satsweets.com', 'https://satsweets.com', $product_image);
+                                            $product_image = str_replace('https://mobile.satsweets.com', 'https://satsweets.com', $product_image);
                                         @endphp
                                         <img src="{{ $product_image }}" class="mb-2">
                                     @else
