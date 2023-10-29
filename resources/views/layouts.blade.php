@@ -157,6 +157,7 @@
 
             // Function to calculate and update the cart items count
             function updateCartItemCount() {
+                var cartData = JSON.parse(localStorage.getItem('cart')) || {};
                 var totalCount = 0;
                 for (var productId in cartData) {
                     totalCount += cartData[productId].quantity;
