@@ -4,10 +4,18 @@
     <!-- Search Form-->
     <div class="container">
         <div class="search-form pt-3 rtl-flex-d-row-r">
-            <form action="#" method="">
-                <input class="form-control" type="search" placeholder="Search in SAT">
-                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
+            <div class="dropdown">
+                <input type="text" class="search-input" placeholder="Search" oninput="filterDropdown()">
+                <div class="dropdown-list" id="dropdownList">
+                    <div class="dropdown-item">Option 1</div>
+                    <div class="dropdown-item">Option 2</div>
+                    <div class="dropdown-item">Option 3</div>
+                    <div class="dropdown-item">Option 4</div>
+                    <div class="dropdown-item">Option 5</div>
+                    <div class="dropdown-item">Option 6</div>
+                    <!-- Add more options here -->
+                </div>
+            </div>
             <!-- Alternative Search Options -->
             <div class="alternative-search-options">
                 <div class="dropdown"><a class="btn btn-danger dropdown-toggle" id="altSearchOption" href="#"
@@ -65,6 +73,49 @@
         </div>
     </div>
 @endsection
+
+@push('styles')
+
+<style>
+    /* Style for the dropdown container */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Style for the input field */
+    .search-input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    /* Style for the dropdown list */
+    .dropdown-list {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        max-height: 150px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        border-top: none;
+        width: 100%;
+    }
+
+    /* Style for list items */
+    .dropdown-item {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    /* Style for selected item */
+    .selected {
+        background-color: #f0f0f0;
+    }
+</style>
+    
+@endpush
 
 @push('scripts')
     <script>
@@ -201,4 +252,39 @@
             localStorage.removeItem('cart');
         }
     </script>
+
+<script>
+    function filterDropdown() {
+        var input, filter, dropdown, items, item, i, value;
+        input = document.querySelector(".search-input");
+        filter = input.value.toUpperCase();
+        dropdown = document.getElementById("dropdownList");
+        items = dropdown.getElementsByClassName("dropdown-item");
+
+        for (i = 0; i < items.length; i++) {
+            item = items[i];
+            value = item.textContent || item.innerText;
+            if (value.toUpperCase().indexOf(filter) > -1) {
+                item.style.display = "";
+            } else {
+                item.style.display = "none";
+            }
+        }
+    }
+
+    // Toggle the dropdown list on input focus
+    document.querySelector(".search-input").addEventListener("focus", function () {
+        document.querySelector(".dropdown-list").style.display = "block";
+    });
+
+    // Close the dropdown list when clicking outside of it
+    window.addEventListener("click", function (event) {
+        if (!event.target.matches(".search-input")) {
+            var dropdowns = document.querySelectorAll(".dropdown-list");
+            dropdowns.forEach(function (dropdown) {
+                dropdown.style.display = "none";
+            });
+        }
+    });
+</script>
 @endpush
