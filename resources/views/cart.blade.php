@@ -148,6 +148,7 @@
                 total += productDetails.price * productDetails.quantity;
             }
             var totalPriceSpan = document.getElementById('totalPrice');
+            console.log(totalPriceSpan);
             totalPriceSpan.textContent = total.toFixed(2); // Update the total price with 2 decimal places
         }
 
