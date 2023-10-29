@@ -73,7 +73,7 @@
             </td>
             <td>${productDetails.price * productDetails.quantity}</td>
             <td>
-                <button onclick="removeFromCart(${productId})">Remove</button>
+                <a class="remove-product"onclick="removeFromCart(${productId})"><i class="fa-solid fa-xmark"></i></a>
             </td>
         `;
 
