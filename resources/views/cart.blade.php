@@ -200,7 +200,5 @@
             // Clear the cart from localStorage
             localStorage.removeItem('cart');
         }
-
-        // Call clearCart() when you want to clear the entire cart
     </script>
 @endpush
