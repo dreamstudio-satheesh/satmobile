@@ -76,30 +76,31 @@
                 total += productDetails.price * productDetails.quantity;
             }
             var totalPriceSpan = document.getElementById('totalPrice');
-            console.log( total.toFixed(2));
+            console.log(total.toFixed(2));
             totalPriceSpan.textContent = total.toFixed(2); // Update the total price with 2 decimal places
         }
 
         // Function to render the cart items
-        // Function to render the cart items and update the total price
-        function renderCartItems() {
-            var cartBody = document.getElementById('cart-body');
-            cartBody.innerHTML = '';
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to render the cart items and update the total price
+            function renderCartItems() {
+                var cartBody = document.getElementById('cart-body');
+                cartBody.innerHTML = '';
 
-            // Check if the cart is empty
-            if (Object.keys(cartData).length === 0) {
-                // Display a message indicating that the cart is empty
-                var emptyCartMessage = document.createElement('tr');
-                emptyCartMessage.innerHTML = `
+                // Check if the cart is empty
+                if (Object.keys(cartData).length === 0) {
+                    // Display a message indicating that the cart is empty
+                    var emptyCartMessage = document.createElement('tr');
+                    emptyCartMessage.innerHTML = `
             <td colspan="5">Your cart is empty.</td>
         `;
-                cartBody.appendChild(emptyCartMessage);
-            } else {
-                // Render cart items
-                for (var productId in cartData) {
-                    var productDetails = cartData[productId];
-                    var row = document.createElement('tr');
-                    row.innerHTML = `
+                    cartBody.appendChild(emptyCartMessage);
+                } else {
+                    // Render cart items
+                    for (var productId in cartData) {
+                        var productDetails = cartData[productId];
+                        var row = document.createElement('tr');
+                        row.innerHTML = `
                 <td>${productDetails.name}</td>
                 <td>${productDetails.price}</td>                    
                 <td>
@@ -113,13 +114,19 @@
                 </td>
             `;
 
-                    cartBody.appendChild(row);
-                }
+                        cartBody.appendChild(row);
+                    }
 
-                // After rendering cart items, update the total price
-                updateCartTotal();
+                    // After rendering cart items, update the total price
+                    updateCartTotal();
+                }
             }
-        }
+
+            // Initial rendering of cart items
+            renderCartItems();
+
+
+        });
 
 
 
@@ -149,11 +156,9 @@
             localStorage.setItem('cart', JSON.stringify(cartData));
         }
 
-        // Initial rendering of cart items
-        renderCartItems();
 
 
-        
+
 
 
 
