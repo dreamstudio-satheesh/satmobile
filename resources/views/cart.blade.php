@@ -77,7 +77,7 @@
             }
             var totalPriceSpan = document.getElementById('totalPrice');
             console.log(total.toFixed(2));
-            totalPriceSpan.textContent = total.toFixed(2); // Update the total price with 2 decimal places
+            totalPriceSpan.textContent = total; // Update the total price with 2 decimal places
         }
 
         // Function to render the cart items
