@@ -204,12 +204,43 @@
         });
 
         document.addEventListener("DOMContentLoaded", function() {
+
+            // Get the selected customer ID from the dropdown
+            var selectedCustomerId = $('#myDropdown').val();
+
+            // Check if there is a previously selected customer in localStorage
+            var storedCustomerId = localStorage.getItem('selectedCustomerId');
+
+            // If a customer ID is stored in localStorage, select it in the dropdown
+            if (storedCustomerId) {
+                customerSelect.value = storedCustomerId;
+            }
+
+            // Add an event listener to the customer select element
+            customerSelect.addEventListener('change', function() {
+                // Get the selected customer ID
+                var selectedCustomerId = customerSelect.value;
+
+                // Check if a customer is selected (not empty)
+                if (selectedCustomerId) {
+                    // Store the selected customer ID in localStorage
+                    localStorage.setItem('selectedCustomerId', selectedCustomerId);
+                } else {
+                    // If no customer is selected, remove the stored value
+                    localStorage.removeItem('selectedCustomerId');
+                }
+            });
+
+
             // Event listener for the "Checkout Now" button
             document.getElementById('checkoutButton').addEventListener('click', function(event) {
                 event.preventDefault();
 
-                // Get the selected customer ID from the dropdown
-                var selectedCustomerId = $('#myDropdown').val();
+                // Check if a customer is selected
+                if (!selectedCustomerId) {
+                    alert('Please select a customer first.');
+                    return;
+                }
 
                 // Retrieve the cart data from local storage
                 var cartData = JSON.parse(localStorage.getItem('cart')) || {};
