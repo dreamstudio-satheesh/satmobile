@@ -11,7 +11,6 @@ const precacheAssets = [
     '/offline.html'
 ];
 
-
 // Install Event
 self.addEventListener('install', function (event) {
     event.waitUntil(
