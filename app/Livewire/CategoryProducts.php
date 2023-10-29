@@ -23,7 +23,7 @@ class CategoryProducts extends Component
         $categories = Category::all();
         $products = [];
         if($this->search){
-            $products = Product::where('name','like','%'.$this->search.'%')->get();
+            $products = Product::search($this->search);
         }
         elseif ($this->selectedCategory) {
             $products = Product::where('category_id', $this->selectedCategory)->get();
