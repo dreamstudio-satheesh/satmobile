@@ -104,15 +104,11 @@
                     </ul>
                 </li>
                 <li><a href="settings.html"><i class="fa-solid fa-sliders"></i>Settings</a></li>
-                <li> <a href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();">
+                <li> <a href="{{ route('app.logout') }}">
                         <i class="fa-solid fa-toggle-off"></i> {{ __('Sign Out') }}
                     </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
+
 
 
             </ul>
@@ -120,7 +116,7 @@
     </div>
 
     <div class="page-content-wrapper">
-        
+
         @yield('content')
 
 

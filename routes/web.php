@@ -27,7 +27,7 @@ route::get('/login.html', function(){
 });
 
 
-//Route::get('/logout',  [App\Http\Controllers\Auth\LoginController::class, 'app.logout']);
+Route::get('/logout',  [App\Http\Controllers\Auth\LoginController::class, 'app.logout']);
 
 Auth::routes([
 
