@@ -4,12 +4,12 @@
     <!-- Search Form-->
     <div class="container">
         <div class="search-form pt-3 rtl-flex-d-row-r">
-            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected>Open this select menu</option>
+            <select id="myDropdown" class="form-select" aria-label="Select Customer" multiple="multiple">
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
-              </select>
+                <!-- Add more options as needed -->
+            </select>
         </div>
     </div>
 
@@ -44,7 +44,7 @@
                     <button class="btn btn-danger" onclick="clearCart()">Clear All</button>
                     <h5 class="total-price mb-0"><span id="totalPrice">0.00</span></h5>
                     <a class="btn btn-warning" href="checkout.html">Checkout Now</a>
-                   
+
                 </div>
             </div>
 
@@ -55,49 +55,11 @@
 @endsection
 
 @push('styles')
-
-<style>
-    /* Style for the dropdown container */
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    /* Style for the input field */
-    .search-input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-
-    /* Style for the dropdown list */
-    .dropdown-list {
-        display: none;
-        position: absolute;
-        z-index: 1;
-        max-height: 150px;
-        overflow-y: auto;
-        border: 1px solid #ccc;
-        border-top: none;
-        width: 100%;
-    }
-
-    /* Style for list items */
-    .dropdown-item {
-        padding: 10px;
-        cursor: pointer;
-    }
-
-    /* Style for selected item */
-    .selected {
-        background-color: #f0f0f0;
-    }
-</style>
-    
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 @endpush
 
 @push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script>
         // Retrieve cart data from localStorage
         var cartData = JSON.parse(localStorage.getItem('cart')) || {};
@@ -234,37 +196,8 @@
     </script>
 
     <script>
-        function filterDropdown() {
-            var input, filter, dropdown, items, item, i, value;
-            input = document.querySelector(".search-input");
-            filter = input.value.toUpperCase();
-            dropdown = document.getElementById("dropdownList");
-            items = dropdown.getElementsByClassName("dropdown-item");
-
-            for (i = 0; i < items.length; i++) {
-                item = items[i];
-                value = item.textContent || item.innerText;
-                if (value.toUpperCase().indexOf(filter) > -1) {
-                    item.style.display = "";
-                } else {
-                    item.style.display = "none";
-                }
-            }
-        }
-
-        // Toggle the dropdown list on input focus
-        document.querySelector(".search-input").addEventListener("focus", function () {
-            document.querySelector(".dropdown-list").style.display = "block";
-        });
-
-        // Close the dropdown list when clicking outside of it
-        window.addEventListener("click", function (event) {
-            if (!event.target.matches(".search-input")) {
-                var dropdowns = document.querySelectorAll(".dropdown-list");
-                dropdowns.forEach(function (dropdown) {
-                    dropdown.style.display = "none";
-                });
-            }
+        $(document).ready(function() {
+            $('#myDropdown').select2();
         });
     </script>
 @endpush
