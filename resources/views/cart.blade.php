@@ -62,10 +62,7 @@
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script>
-        // Retrieve cart data from localStorage
-        var cartData = JSON.parse(localStorage.getItem('cart')) || {};
-
-
+        
         // Function to calculate and update the cart's total amount
         function updateCartTotal() {
             var total = 0;

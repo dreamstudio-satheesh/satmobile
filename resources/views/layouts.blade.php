@@ -54,8 +54,8 @@
             </div>
             <div class="navbar-logo-container d-flex align-items-center">
                 <!-- Cart Icon -->
-                <div class="cart-icon-wrap"><a href="cart.html"><i
-                            class="fa-solid fa-bag-shopping"></i><span id="cartItemCount">0</span></a></div>
+                <div class="cart-icon-wrap"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i><span
+                            id="cartItemCount">0</span></a></div>
                 <!-- User Profile Icon -->
                 <div class="user-profile-icon ms-2"><a href="profile.html"><img src="img/bg-img/9.jpg"
                             alt=""></a></div>
@@ -150,8 +150,45 @@
         <script src="js/no-internet.js"></script>
         <script src="js/active.js"></script>
         <script src="js/pwa.js"></script>
+
+        <script>
+            // Retrieve cart data from localStorage
+            var cartData = JSON.parse(localStorage.getItem('cart')) || {};
+
+            // Function to calculate and update the cart items count
+            function updateCartItemCount() {
+                var totalCount = 0;
+                for (var productId in cartData) {
+                    totalCount += cartData[productId].quantity;
+                }
+                return totalCount;
+            }
+
+            // Function to update the cart items count on the page
+            function updateCartItemCountOnPage() {
+                // Calculate and update the cart items count
+                var itemCount = updateCartItemCount();
+
+                // Get the cart items count element by its id "cartItemCount"
+                var cartItemCountSpan = document.getElementById('cartItemCount');
+
+                if (cartItemCountSpan) {
+                    // Update the cart items count if the element exists
+                    cartItemCountSpan.textContent = itemCount;
+                }
+            }
+
+            // Use the DOMContentLoaded event to ensure the DOM is ready
+            document.addEventListener("DOMContentLoaded", function() {
+                // Initial rendering of cart items
+                updateCartItemCountOnPage();
+            });
+
+            // Call the updateCartItemCountOnPage function whenever needed
+            // For example, you can call it after adding or removing items from the cart
+        </script>
         @stack('scripts')
-       
+
 </body>
 
 </html>
