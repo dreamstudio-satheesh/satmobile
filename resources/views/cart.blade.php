@@ -56,30 +56,45 @@
 @push('scripts')
     <script>
         // Retrieve cart data from localStorage
-        var cartData = JSON.parse(localStorage.getItem('cart'));
+        var cartData = JSON.parse(localStorage.getItem('cart')) || {};
+
         // Function to render the cart items
         function renderCartItems() {
-            var cartBody = document.getElementById('cart-body');
-            cartBody.innerHTML = '';
+    var cartBody = document.getElementById('cart-body');
+    cartBody.innerHTML = '';
 
-            for (var productId in cartData) {
-                var productDetails = cartData[productId];
-                var row = document.createElement('tr');
-                row.innerHTML = `
-            <td>${productDetails.name}</td>
-            <td>${productDetails.price}</td>                    
-            <td>
-                <div class="quantity"> <input class="qty-text" type="number" min="1" value="${productDetails.quantity}" onchange="updateQuantity(${productId}, this.value)"></div>
-            </td>
-            <td>${productDetails.price * productDetails.quantity}</td>
-            <td>
-                <a class="remove-product"onclick="removeFromCart(${productId})"><i class="fa-solid fa-xmark"></i></a>
-            </td>
+    // Check if the cart is empty
+    if (Object.keys(cartData).length === 0) {
+        // Display a message indicating that the cart is empty
+        var emptyCartMessage = document.createElement('tr');
+        emptyCartMessage.innerHTML = `
+            <td colspan="5">Your cart is empty.</td>
         `;
+        cartBody.appendChild(emptyCartMessage);
+    } else {
+        // Render cart items
+        for (var productId in cartData) {
+            var productDetails = cartData[productId];
+            var row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${productDetails.name}</td>
+                <td>${productDetails.price}</td>                    
+                <td>
+                    <div class="quantity">
+                        <input class="qty-text" type="number" min="1" value="${productDetails.quantity}" onchange="updateQuantity(${productId}, this.value)">
+                    </div>
+                </td>
+                <td>${(productDetails.price * productDetails.quantity).toFixed(2)}</td>
+                <td>
+                    <a class="remove-product" onclick="removeFromCart(${productId})"><i class="fa-solid fa-xmark"></i></a>
+                </td>
+            `;
 
-                cartBody.appendChild(row);
-            }
+            cartBody.appendChild(row);
         }
+    }
+}
+
 
         // Function to update quantity
         function updateQuantity(productId, newQuantity) {
