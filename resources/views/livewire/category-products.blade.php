@@ -58,7 +58,7 @@
 
                 @foreach ($products as $product)
                     <!-- Product Card -->
-                    <div class="col-4">
+                    <div class="col-6 col-md-4">
                         <div class="card product-card">
                             <div class="card-body">
                                 <!-- Badge--><span class="badge rounded-pill badge-success">New</span>
@@ -81,7 +81,7 @@
                                     @endif
 
                                 </a>
-                                <!-- Product Title --><a class="product-title" style="font-size: 10px;">{{ $product->name }}</a>
+                                <!-- Product Title --><a class="product-title" style="font-size: 12px;">{{ $product->name }}</a>
 
 
                                 <div class="cart-form">
