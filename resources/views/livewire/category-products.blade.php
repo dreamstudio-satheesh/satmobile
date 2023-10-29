@@ -81,13 +81,15 @@
                                     @endif
 
                                 </a>
-                                <!-- Product Title --><a class="product-title" style="font-size: 12px;">{{ $product->name }}</a>
+                                <!-- Product Title --><a class="product-title" href="">{{ $product->name }}</a>
 
 
                                 <div class="cart-form">
                                     <div class="order-plus-minus d-flex align-items-center">
+                                        <div class="quantity-button-handler">-</div>
                                         <input class="form-control cart-quantity-input" type="number" step="1"
                                             name="quantity" value="1" data-input-id="{{ $product->id }}">
+                                        <div class="quantity-button-handler">+</div>
                                     </div>
 
 
@@ -106,16 +108,3 @@
     </div>
     <!-- Top Products -->
 </div>
-
-
-@push('styles')
-
-<style type="text/css">
-.product-card .active {
-    background-color: #f7f7f7; /* Example background color */
-    border: 2px solid #00a8e6; /* Example border color */
-    /* Add any other styling you want */
-}
-</style>
-    
-@endpush
