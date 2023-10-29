@@ -44,6 +44,6 @@ class HomeController extends Controller
             $customers = Customer::all();
         }    
         
-        return view('cart');
+        return view('cart', compact('customers'));
     }
 }
