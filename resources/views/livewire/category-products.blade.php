@@ -15,7 +15,7 @@
                                         @endphp
                                         <img src="{{ $image }}">
                                     @else
-                                        <img src="{{ url('') }}/assets/img/product/noimage.png" alt="product">
+                                        <img src="{{ url('') }}/img/noimage.png" alt="product">
                                     @endif
                                     <span>{{ $category->name }}</span>
                                 </a></div>
