@@ -4,7 +4,7 @@
     <!-- Search Form-->
     <div class="container">
         <div class="search-form pt-3 rtl-flex-d-row-r">
-            <select id="myDropdown" class="form-select" aria-label="Select Customer" multiple="multiple">
+            <select id="myDropdown" class="form-select" aria-label="Select Customer">
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
