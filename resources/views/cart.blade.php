@@ -68,6 +68,7 @@
         var cartData = JSON.parse(localStorage.getItem('cart')) || {};
 
         // Function to render the cart items
+        // Function to render the cart items and update the total price
         function renderCartItems() {
             var cartBody = document.getElementById('cart-body');
             cartBody.innerHTML = '';
@@ -100,12 +101,13 @@
             `;
 
                     cartBody.appendChild(row);
-
-                    // Call updateCartTotal() to initially set the total amount
-                    updateCartTotal();
                 }
+
+                // After rendering cart items, update the total price
+                updateCartTotal();
             }
         }
+
 
 
         // Function to update quantity
