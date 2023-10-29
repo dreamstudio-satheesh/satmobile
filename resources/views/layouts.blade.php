@@ -55,7 +55,7 @@
             <div class="navbar-logo-container d-flex align-items-center">
                 <!-- Cart Icon -->
                 <div class="cart-icon-wrap"><a href="cart.html"><i
-                            class="fa-solid fa-bag-shopping"></i><span>2</span></a></div>
+                            class="fa-solid fa-bag-shopping"></i><span id="cartItemCount">0</span></a></div>
                 <!-- User Profile Icon -->
                 <div class="user-profile-icon ms-2"><a href="profile.html"><img src="img/bg-img/9.jpg"
                             alt=""></a></div>
@@ -151,6 +151,36 @@
         <script src="js/active.js"></script>
         <script src="js/pwa.js"></script>
         @stack('scripts')
+        <script>
+            // Function to calculate and update the cart items count
+            function updateCartItemCount() {
+                var totalCount = 0;
+                for (var productId in cartData) {
+                    totalCount += cartData[productId].quantity;
+                }
+                return totalCount;
+            }
+
+            // Function to render the cart items and update the total price
+            function renderCartItems() {
+                // ... (your existing code)
+
+                // Calculate and update the cart items count
+                var itemCount = updateCartItemCount();
+
+                // Get the <span> element by its id "cartItemCount"
+                var cartItemCountSpan = document.getElementById('cartItemCount');
+
+                // Update the cart items count
+                cartItemCountSpan.textContent = itemCount;
+            }
+
+            // Use the DOMContentLoaded event to ensure the DOM is ready
+            document.addEventListener("DOMContentLoaded", function() {
+                // Initial rendering of cart items
+                renderCartItems();
+            });
+        </script>
 </body>
 
 </html>
