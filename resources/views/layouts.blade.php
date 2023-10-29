@@ -169,6 +169,8 @@
                 // Calculate and update the cart items count
                 var itemCount = updateCartItemCount();
 
+                consol.log('call itemCount');
+
                 consol.log(itemCount);
 
                 // Get the cart items count element by its id "cartItemCount"
