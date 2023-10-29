@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="style.css">
     <!-- Web App Manifest -->
     <link rel="manifest" href="manifest.json">
+    @stack('styles')
 </head>
 
 <body>
