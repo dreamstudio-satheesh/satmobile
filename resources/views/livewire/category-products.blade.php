@@ -111,7 +111,7 @@
 @push('styles')
 
 <style type="text/css">
-..product-card .product-thumbnail img {
+..product-card .active  {
         border: 1px solid #7367F0;
 }
 </style>
