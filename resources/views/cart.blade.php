@@ -3,21 +3,28 @@
 @section('content')
     <!-- Search Form-->
     <div class="container">
-       
-            <div class="dropdown">
-                <input type="text" class="search-input" placeholder="Search" oninput="filterDropdown()">
-                <div class="dropdown-list" id="dropdownList">
-                    <div class="dropdown-item">Option 1</div>
-                    <div class="dropdown-item">Option 2</div>
-                    <div class="dropdown-item">Option 3</div>
-                    <div class="dropdown-item">Option 4</div>
-                    <div class="dropdown-item">Option 5</div>
-                    <div class="dropdown-item">Option 6</div>
-                    <!-- Add more options here -->
+        <div class="search-form pt-3 rtl-flex-d-row-r">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            <!-- Alternative Search Options -->
+            <div class="alternative-search-options">
+                <div class="dropdown"><a class="btn btn-danger dropdown-toggle" id="altSearchOption" href="#"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+                            class="fa-solid fa-sliders"></i></a>
+                    <!-- Dropdown Menu -->
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="altSearchOption">
+                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-microphone"> </i>Voice
+                                Search</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-image"> </i>Image
+                                Search</a></li>
+                    </ul>
                 </div>
             </div>
-           
-       
+        </div>
     </div>
 
 
@@ -240,38 +247,38 @@
         }
     </script>
 
-<script>
-    function filterDropdown() {
-        var input, filter, dropdown, items, item, i, value;
-        input = document.querySelector(".search-input");
-        filter = input.value.toUpperCase();
-        dropdown = document.getElementById("dropdownList");
-        items = dropdown.getElementsByClassName("dropdown-item");
+    <script>
+        function filterDropdown() {
+            var input, filter, dropdown, items, item, i, value;
+            input = document.querySelector(".search-input");
+            filter = input.value.toUpperCase();
+            dropdown = document.getElementById("dropdownList");
+            items = dropdown.getElementsByClassName("dropdown-item");
 
-        for (i = 0; i < items.length; i++) {
-            item = items[i];
-            value = item.textContent || item.innerText;
-            if (value.toUpperCase().indexOf(filter) > -1) {
-                item.style.display = "";
-            } else {
-                item.style.display = "none";
+            for (i = 0; i < items.length; i++) {
+                item = items[i];
+                value = item.textContent || item.innerText;
+                if (value.toUpperCase().indexOf(filter) > -1) {
+                    item.style.display = "";
+                } else {
+                    item.style.display = "none";
+                }
             }
         }
-    }
 
-    // Toggle the dropdown list on input focus
-    document.querySelector(".search-input").addEventListener("focus", function () {
-        document.querySelector(".dropdown-list").style.display = "block";
-    });
+        // Toggle the dropdown list on input focus
+        document.querySelector(".search-input").addEventListener("focus", function () {
+            document.querySelector(".dropdown-list").style.display = "block";
+        });
 
-    // Close the dropdown list when clicking outside of it
-    window.addEventListener("click", function (event) {
-        if (!event.target.matches(".search-input")) {
-            var dropdowns = document.querySelectorAll(".dropdown-list");
-            dropdowns.forEach(function (dropdown) {
-                dropdown.style.display = "none";
-            });
-        }
-    });
-</script>
+        // Close the dropdown list when clicking outside of it
+        window.addEventListener("click", function (event) {
+            if (!event.target.matches(".search-input")) {
+                var dropdowns = document.querySelectorAll(".dropdown-list");
+                dropdowns.forEach(function (dropdown) {
+                    dropdown.style.display = "none";
+                });
+            }
+        });
+    </script>
 @endpush
