@@ -125,12 +125,11 @@
             // Update the total price with 2 decimal places
             totalPriceSpan.textContent = '₹' + total.toFixed(2);
 
-            // Log the <span> element and the total to the console
-            console.log(totalPriceSpan);
-            console.log(total);
-
 
         }
+
+
+
         // Use the DOMContentLoaded event to ensure the DOM is ready
         document.addEventListener("DOMContentLoaded", function() {
             // Initial rendering of cart items
@@ -155,10 +154,12 @@
             // Re-render the cart items
             renderCartItems();
 
-            // Save the
-             updated cartData to localStorage
+            // Save the updated cartData to localStorage
             localStorage.setItem('cart', JSON.stringify(cartData));
         }
+
+
+
 
 
         // Function to remove a product from the cart
