@@ -101,7 +101,7 @@
                 <td>${productDetails.price}</td>                    
                 <td>
                     <div class="quantity">
-                        <input class="qty-text" type="number" min="1" value="${productDetails.quantity}" onchange="updateQuantity(${productId}, this.value)">
+                        <input class="qty-text" type="number" min="1" value="${productDetails.quantity}" onchange="updateQuantity(${productId}, this)">
                     </div>
                 </td>
                 <td>${(productDetails.price * productDetails.quantity).toFixed(2)}</td>
