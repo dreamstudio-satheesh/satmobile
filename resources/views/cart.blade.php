@@ -75,7 +75,7 @@
                 var productDetails = cartData[productId];
                 total += productDetails.price * productDetails.quantity;
             }
-           return total;
+            return total;
         }
 
         // Function to render the cart items and update the total price
@@ -116,16 +116,20 @@
 
             }
 
-            // Update the cart's total amount
-            updateCartTotal();
-            var totalPriceSpan = document.getElementById('totalPrice');
+            // Calculate and update the cart's total amount
             var total = updateCartTotal();
-            totalPriceSpan.textContent = total.toFixed; // Update the total price with 2 decimal places
 
-           console.log(totalPriceSpan);
+            // Get the <span> element by its id "totalPrice"
+            var totalPriceSpan = document.getElementById('totalPrice');
 
-           console.log(total);
-            
+            // Update the total price with 2 decimal places
+            totalPriceSpan.textContent = '₹' + total.toFixed(2);
+
+            // Log the <span> element and the total to the console
+            console.log(totalPriceSpan);
+            console.log(total);
+
+
         }
         // Use the DOMContentLoaded event to ensure the DOM is ready
         document.addEventListener("DOMContentLoaded", function() {
