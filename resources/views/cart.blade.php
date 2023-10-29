@@ -120,6 +120,9 @@
             // Update the total price with 2 decimal places
             totalPriceSpan.textContent = '₹' + total.toFixed(2);
 
+             // Refresh the cart items count on the page
+             updateCartItemCountOnPage();
+
 
         }
 
