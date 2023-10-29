@@ -16,7 +16,7 @@ class ViewCart extends Component
 
     public function render()
     {
-       dd($this->cart);
+       
         return view('livewire.view-cart');
     }
 
