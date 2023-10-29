@@ -211,11 +211,13 @@
 
         // If a customer ID is stored in localStorage, select it in the dropdown
         if (storedCustomerId) {
-            customerSelect.value = storedCustomerId;
+            // Use the correct variable here (selectedCustomerId)
+            selectedCustomerId = storedCustomerId;
+            $('#myDropdown').val(selectedCustomerId); // Set the selected value in the dropdown
         }
 
         // Add an event listener to the customer select element
-        customerSelect.addEventListener('change', function() {
+        $('#myDropdown').on('change', function() {
             // Get the selected customer ID
             var selectedCustomerId = customerSelect.value;
 
