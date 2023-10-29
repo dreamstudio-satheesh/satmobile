@@ -169,7 +169,7 @@
                 // Calculate and update the cart items count
                 var itemCount = updateCartItemCount();
 
-                console.log('call itemCount');
+                console.log('call itemCount :'.itemCount);
 
                
 
@@ -179,6 +179,7 @@
                 if (cartItemCountSpan) {
                     // Update the cart items count if the element exists
                     cartItemCountSpan.textContent = itemCount;
+
                 }
             }
 
