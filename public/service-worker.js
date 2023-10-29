@@ -18,13 +18,33 @@ const precacheAssets = [
 ];
 
 // Install Event
+
 self.addEventListener('install', function (event) {
+    event.waitUntil(
+        caches.open(staticCacheName).then(function (cache) {
+            return Promise.all(precacheAssets.map(function (url) {
+                return fetch(url)
+                    .then(function (response) {
+                        if (!response.ok) {
+                            throw new Error('Failed to fetch: ' + url);
+                        }
+                        return cache.put(url, response);
+                    })
+                    .catch(function (error) {
+                        console.error('Failed to fetch resource:', error);
+                    });
+            }));
+        })
+    );
+});
+
+/* self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open(staticCacheName).then(function (cache) {
             return cache.addAll(precacheAssets);
         })
     );
-});
+}); */
 
 // Activate Event
 self.addEventListener('activate', function (event) {
@@ -40,6 +60,24 @@ self.addEventListener('activate', function (event) {
 
 // Fetch Event
 self.addEventListener('fetch', function (event) {
+    if (event.request.method === 'GET') {
+        event.respondWith(
+            caches.match(event.request).then(cacheRes => {
+                return cacheRes || fetch(event.request).then(response => {
+                    return caches.open(dynamicCacheName).then(function (cache) {
+                        cache.put(event.request, response.clone());
+                        return response;
+                    })
+                });
+            }).catch(function () {
+                // Fallback Page, When No Internet Connection
+                return caches.match('offline.html');
+            })
+        );
+    }
+});
+
+/* self.addEventListener('fetch', function (event) {
     event.respondWith(
         caches.match(event.request).then(cacheRes => {
             return cacheRes || fetch(event.request).then(response => {
@@ -53,4 +91,4 @@ self.addEventListener('fetch', function (event) {
             return caches.match('offline.html');
           })
     );
-});
+}); */
