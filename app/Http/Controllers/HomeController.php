@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Line;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,6 +31,19 @@ class HomeController extends Controller
 
     public function cart()
     {
+        if(auth()->user()->hasRole('user') && auth()->user()->user_line_id){
+                      
+            $customers = Customer::where('line_id', auth()->user()->user_line_id)->get();
+            
+        }elseif(auth()->user()->hasRole('user') && auth()->user()->line_id){
+
+            $lines=Line::where('line', auth()->user()->line_id )->select('id')->get()->toArray();            
+            $customers = Customer::whereIn('line_id',$lines)->get();
+            
+        }else{
+            $customers = Customer::all();
+        }    
+        
         return view('cart');
     }
 }
