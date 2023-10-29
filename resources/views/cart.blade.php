@@ -117,9 +117,11 @@
 
 
             }
-            // After rendering cart items, update the total price
-            updateCartTotal();
 
+            // Update the cart's total amount
+
+            updateCartTotal();
+            
         }
         // Use the DOMContentLoaded event to ensure the DOM is ready
         document.addEventListener("DOMContentLoaded", function() {
