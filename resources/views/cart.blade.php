@@ -52,7 +52,7 @@
             <!-- Cart Amount Area-->
             <div class="card cart-amount-area">
                 <div class="card-body d-flex align-items-center justify-content-between">
-                    <h5 class="total-price mb-0">₹<span id="totalPrice" class="counter">0.00</span></h5>
+                    <h5 class="total-price mb-0">₹<span id="totalPrice">0.00</span></h5>
                     <a class="btn btn-warning" href="checkout.html">Checkout Now</a>
                 </div>
             </div>
@@ -118,7 +118,6 @@
 
             // Update the cart's total amount
             updateCartTotal();
-
             var totalPriceSpan = document.getElementById('totalPrice');
             var total = updateCartTotal();
             totalPriceSpan.textContent = total.toFixed; // Update the total price with 2 decimal places
