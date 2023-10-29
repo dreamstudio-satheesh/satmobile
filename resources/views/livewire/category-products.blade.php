@@ -76,7 +76,7 @@
                                         @endphp
                                         <img src="{{ $product_image }}" class="mb-2">
                                     @else
-                                        <img src="assets/img/product/product29.jpg" class="img-fluid img-thumbnail"
+                                        <img src="https://satsweets.com/assets/img/product/product29.jpg" class="img-fluid img-thumbnail"
                                             alt="img">
                                     @endif
 
