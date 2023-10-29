@@ -75,9 +75,7 @@
                 var productDetails = cartData[productId];
                 total += productDetails.price * productDetails.quantity;
             }
-            var totalPriceSpan = document.getElementById('totalPrice');
-            console.log(total.toFixed(2));
-            totalPriceSpan.textContent = total; // Update the total price with 2 decimal places
+           return total;
         }
 
         // Function to render the cart items and update the total price
@@ -119,8 +117,15 @@
             }
 
             // Update the cart's total amount
-
             updateCartTotal();
+
+            var totalPriceSpan = document.getElementById('totalPrice');
+            var total = updateCartTotal();
+            totalPriceSpan.textContent = total.toFixed; // Update the total price with 2 decimal places
+
+           console.log(totalPriceSpan);
+
+           console.log(total);
             
         }
         // Use the DOMContentLoaded event to ensure the DOM is ready
