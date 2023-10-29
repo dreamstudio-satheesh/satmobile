@@ -244,7 +244,7 @@
                     alert('Please select a customer first.');
                     return;
                 }
-
+                console.log(selectedCustomerId);
                 // Retrieve the cart data from local storage
                 var cartData = JSON.parse(localStorage.getItem('cart')) || {};
 
