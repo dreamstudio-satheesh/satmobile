@@ -171,7 +171,7 @@
 
                 console.log('call itemCount');
 
-                console.log(itemCount);
+               
 
                 // Get the cart items count element by its id "cartItemCount"
                 var cartItemCountSpan = document.getElementById('cartItemCount');
