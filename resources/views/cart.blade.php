@@ -67,6 +67,19 @@
         // Retrieve cart data from localStorage
         var cartData = JSON.parse(localStorage.getItem('cart')) || {};
 
+
+        // Function to calculate and update the cart's total amount
+        function updateCartTotal() {
+            var total = 0;
+            for (var productId in cartData) {
+                var productDetails = cartData[productId];
+                total += productDetails.price * productDetails.quantity;
+            }
+            var totalPriceSpan = document.getElementById('totalPrice');
+            console.log( total.toFixed(2));
+            totalPriceSpan.textContent = total.toFixed(2); // Update the total price with 2 decimal places
+        }
+
         // Function to render the cart items
         // Function to render the cart items and update the total price
         function renderCartItems() {
@@ -140,17 +153,7 @@
         renderCartItems();
 
 
-        // Function to calculate and update the cart's total amount
-        function updateCartTotal() {
-            var total = 0;
-            for (var productId in cartData) {
-                var productDetails = cartData[productId];
-                total += productDetails.price * productDetails.quantity;
-            }
-            var totalPriceSpan = document.getElementById('totalPrice');
-            console.log( total.toFixed(2));
-            totalPriceSpan.textContent = total.toFixed(2); // Update the total price with 2 decimal places
-        }
+        
 
 
 
