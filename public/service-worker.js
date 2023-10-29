@@ -12,7 +12,6 @@ const precacheAssets = [
 ];
 
 
-
 // Install Event
 self.addEventListener('install', function (event) {
     event.waitUntil(
