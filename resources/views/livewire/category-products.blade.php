@@ -106,3 +106,14 @@
     </div>
     <!-- Top Products -->
 </div>
+
+
+@push('styles')
+
+<style type="text/css">
+..product-card .product-thumbnail img {
+        border: 1px solid #7367F0;
+}
+</style>
+    
+@endpush
