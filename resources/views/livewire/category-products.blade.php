@@ -81,7 +81,7 @@
                                     @endif
 
                                 </a>
-                                <!-- Product Title --><a class="product-title" href="">{{ $product->name }}</a>
+                                <!-- Product Title --><a class="product-title" style="font-size: 10px;">{{ $product->name }}</a>
 
 
                                 <div class="cart-form">
