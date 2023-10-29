@@ -104,7 +104,7 @@
                     </ul>
                 </li>
                 <li><a href="settings.html"><i class="fa-solid fa-sliders"></i>Settings</a></li>
-                <li> <a href="{{ route('app.logout') }}">
+                <li> <a href="{{ route('auth.logout') }}">
                         <i class="fa-solid fa-toggle-off"></i> {{ __('Sign Out') }}
                     </a>
 
