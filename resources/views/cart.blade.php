@@ -50,12 +50,15 @@
             </div>
 
             <!-- Cart Amount Area-->
+            <!-- Cart Amount Area-->
             <div class="card cart-amount-area">
                 <div class="card-body d-flex align-items-center justify-content-between">
                     <h5 class="total-price mb-0"><span id="totalPrice">0.00</span></h5>
                     <a class="btn btn-warning" href="checkout.html">Checkout Now</a>
+                    <button class="btn btn-danger" onclick="clearCart()">Clear All</button>
                 </div>
             </div>
+
 
 
         </div>
