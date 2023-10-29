@@ -219,7 +219,7 @@
         // Add an event listener to the customer select element
         $('#myDropdown').on('change', function() {
             // Get the selected customer ID
-            var selectedCustomerId = customerSelect.value;
+            var selectedCustomerId = $(this).val();
 
             // Check if a customer is selected (not empty)
             if (selectedCustomerId) {
@@ -230,6 +230,7 @@
                 localStorage.removeItem('selectedCustomerId');
             }
         });
+
 
 
         document.addEventListener("DOMContentLoaded", function() {
@@ -244,7 +245,7 @@
                     alert('Please select a customer first.');
                     return;
                 }
-               
+
                 // Retrieve the cart data from local storage
                 var cartData = JSON.parse(localStorage.getItem('cart')) || {};
 
