@@ -54,20 +54,18 @@
 @endsection
 
 @push('scripts')
+    <script>
+        // Retrieve cart data from localStorage
+        var cartData = JSON.parse(localStorage.getItem('cart'));
+        // Function to render the cart items
+        function renderCartItems() {
+            var cartBody = document.getElementById('cart-body');
+            cartBody.innerHTML = '';
 
-
-<script>
-    // Retrieve cart data from localStorage
-    var cartData = JSON.parse(localStorage.getItem('cart'));
-    // Function to render the cart items
-    function renderCartItems() {
-        var cartBody = document.getElementById('cart-body');
-        cartBody.innerHTML = '';
-
-        for (var productId in cartData) {
-            var productDetails = cartData[productId];
-            var row = document.createElement('tr');
-            row.innerHTML = `
+            for (var productId in cartData) {
+                var productDetails = cartData[productId];
+                var row = document.createElement('tr');
+                row.innerHTML = `
             <td>${productDetails.name}</td>
             <td>${productDetails.price}</td>
             <td>
@@ -79,32 +77,54 @@
             </td>
         `;
 
-            cartBody.appendChild(row);
+                cartBody.appendChild(row);
+            }
         }
-    }
 
-    // Function to update quantity
-    function updateQuantity(productId, newQuantity) {
-        // Update the cartData object
-        cartData[productId].quantity = parseInt(newQuantity);
-        // Call your backend to update the cart data as well
+        // Function to update quantity
+        function updateQuantity(productId, newQuantity) {
+            // Update the cartData object
+            cartData[productId].quantity = parseInt(newQuantity);
+            // Call your backend to update the cart data as well
 
-        // Re-render the cart items
+            // Re-render the cart items
+            renderCartItems();
+
+            // Save the updated cartData to localStorage
+            localStorage.setItem('cart', JSON.stringify(cartData));
+        }
+
+        // Function to remove a product from the cart
+        function removeFromCart(productId) {
+            // Remove the product from cartData
+            delete cartData[productId];
+            // Call your backend to update the cart data as well
+
+            // Re-render the cart items
+            renderCartItems();
+
+            // Save the updated cartData to localStorage
+            localStorage.setItem('cart', JSON.stringify(cartData));
+        }
+
+        // Initial rendering of cart items
         renderCartItems();
-    }
 
-    // Function to remove a product from the cart
-    function removeFromCart(productId) {
-        // Remove the product from cartData
-        delete cartData[productId];
-        // Call your backend to update the cart data as well
 
-        // Re-render the cart items
-        renderCartItems();
-    }
 
-    // Initial rendering of cart items
-    renderCartItems();
-</script>
+        // Function to clear the entire cart
+        function clearCart() {
+            // Clear the cartData object
+            cartData = {};
+            // Call your backend to update the cart data as well
 
+            // Re-render the cart items (will clear the UI)
+            renderCartItems();
+
+            // Clear the cart from localStorage
+            localStorage.removeItem('cart');
+        }
+
+        // Call clearCart() when you want to clear the entire cart
+    </script>
 @endpush
