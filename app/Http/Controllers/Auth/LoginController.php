@@ -52,7 +52,7 @@ class LoginController extends Controller
             return $response;
         }
 
-        return redirect('/');
+        return redirect('/login');
     }
 
 
