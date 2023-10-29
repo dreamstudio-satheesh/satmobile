@@ -49,6 +49,10 @@
                     // Check if the quantityInput is found
                     if (quantityInput) {
                         var productQuantity = parseInt(quantityInput.value);
+                        // Ensure that the new quantity is at least 1
+                        if (productQuantity < 1) {
+                            productQuantity = 1;
+                        }
 
                         // Create a product object
                         var product = {
@@ -58,7 +62,7 @@
                             quantity: productQuantity
                         };
 
-                        
+
 
                         // Handle adding the product to the cart or perform any other actions
                         // Get the current cart from localStorage (if it exists)
