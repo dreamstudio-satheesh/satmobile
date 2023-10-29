@@ -20,21 +20,24 @@ const precacheAssets = [
     );
 }); */
 
+// Install Event
 self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open(staticCacheName).then(function (cache) {
-            return Promise.all(precacheAssets.map(function (url) {
-                return fetch(url)
-                    .then(function (response) {
-                        if (!response.ok) {
-                            throw new Error('Failed to fetch: ' + url);
-                        }
-                        return cache.put(url, response);
-                    })
-                    .catch(function (error) {
-                        console.error('Failed to fetch resource:', error);
-                    });
-            }));
+            return Promise.all(
+                precacheAssets.map(function (url) {
+                    return fetch(url)
+                        .then(function (response) {
+                            if (!response.ok) {
+                                throw new Error('Failed to fetch: ' + url);
+                            }
+                            return cache.put(url, response);
+                        })
+                        .catch(function (error) {
+                            console.error('Failed to fetch resource:', error);
+                        });
+                })
+            );
         })
     );
 });
