@@ -49,6 +49,15 @@
                 </div>
             </div>
 
+            <!-- Cart Amount Area-->
+            <div class="card cart-amount-area">
+                <div class="card-body d-flex align-items-center justify-content-between">
+                    <h5 class="total-price mb-0">$<span id="totalPrice" class="counter">0.00</span></h5>
+                    <a class="btn btn-warning" href="checkout.html">Checkout Now</a>
+                </div>
+            </div>
+
+
         </div>
     </div>
 @endsection
@@ -60,23 +69,23 @@
 
         // Function to render the cart items
         function renderCartItems() {
-    var cartBody = document.getElementById('cart-body');
-    cartBody.innerHTML = '';
+            var cartBody = document.getElementById('cart-body');
+            cartBody.innerHTML = '';
 
-    // Check if the cart is empty
-    if (Object.keys(cartData).length === 0) {
-        // Display a message indicating that the cart is empty
-        var emptyCartMessage = document.createElement('tr');
-        emptyCartMessage.innerHTML = `
+            // Check if the cart is empty
+            if (Object.keys(cartData).length === 0) {
+                // Display a message indicating that the cart is empty
+                var emptyCartMessage = document.createElement('tr');
+                emptyCartMessage.innerHTML = `
             <td colspan="5">Your cart is empty.</td>
         `;
-        cartBody.appendChild(emptyCartMessage);
-    } else {
-        // Render cart items
-        for (var productId in cartData) {
-            var productDetails = cartData[productId];
-            var row = document.createElement('tr');
-            row.innerHTML = `
+                cartBody.appendChild(emptyCartMessage);
+            } else {
+                // Render cart items
+                for (var productId in cartData) {
+                    var productDetails = cartData[productId];
+                    var row = document.createElement('tr');
+                    row.innerHTML = `
                 <td>${productDetails.name}</td>
                 <td>${productDetails.price}</td>                    
                 <td>
@@ -90,10 +99,10 @@
                 </td>
             `;
 
-            cartBody.appendChild(row);
+                    cartBody.appendChild(row);
+                }
+            }
         }
-    }
-}
 
 
         // Function to update quantity
@@ -124,6 +133,22 @@
 
         // Initial rendering of cart items
         renderCartItems();
+
+
+        // Function to calculate and update the cart's total amount
+        function updateCartTotal() {
+            var total = 0;
+            for (var productId in cartData) {
+                var productDetails = cartData[productId];
+                total += productDetails.price * productDetails.quantity;
+            }
+            var totalPriceSpan = document.getElementById('totalPrice');
+            totalPriceSpan.textContent = total.toFixed(2); // Update the total price with 2 decimal places
+        }
+
+        // Call updateCartTotal() to initially set the total amount
+        updateCartTotal();
+
 
 
 
