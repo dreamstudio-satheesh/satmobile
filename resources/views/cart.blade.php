@@ -220,6 +220,8 @@
 
         // Add an event listener to the customer select element
         $('#myDropdown').on('change', function() {
+
+            console.log('call change');
             // Get the selected customer ID
             var selectedCustomerId = $(this).val();
 
