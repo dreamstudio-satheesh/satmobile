@@ -1,1 +1,3 @@
 git reset to 718da01
+
+add remote server admin@94.130.229.50:/home/admin/web/satmobile.git
