@@ -205,23 +205,12 @@
             $('#myDropdown').select2();
         });
 
-        // Get the selected customer ID from the dropdown
-        var selectedCustomerId = $('#myDropdown').val();
 
-        // Check if there is a previously selected customer in localStorage
-        var storedCustomerId = localStorage.getItem('selectedCustomerId');
-
-        // If a customer ID is stored in localStorage, select it in the dropdown
-        if (storedCustomerId) {
-            // Use the correct variable here (selectedCustomerId)
-            selectedCustomerId = storedCustomerId;
-            $('#myDropdown').val(selectedCustomerId); // Set the selected value in the dropdown
-        }
 
         // Add an event listener to the customer select element
         $('#myDropdown').on('change', function() {
 
-            
+
             // Get the selected customer ID
             var selectedCustomerId = $(this).val();
 
@@ -240,6 +229,19 @@
 
 
         document.addEventListener("DOMContentLoaded", function() {
+
+            // Get the selected customer ID from the dropdown
+            var selectedCustomerId = $('#myDropdown').val();
+
+            // Check if there is a previously selected customer in localStorage
+            var storedCustomerId = localStorage.getItem('selectedCustomerId');
+
+            // If a customer ID is stored in localStorage, select it in the dropdown
+            if (storedCustomerId) {
+                // Use the correct variable here (selectedCustomerId)
+                selectedCustomerId = storedCustomerId;
+                $('#myDropdown').val(selectedCustomerId); // Set the selected value in the dropdown
+            }
 
 
             // Event listener for the "Checkout Now" button
