@@ -44,3 +44,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/home.html', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 Route::get('/cart.html', [App\Http\Controllers\HomeController::class, 'cart'])->name('cart');
+
+
+// routes/web.php
+
+Route::post('/checkout', 'CheckoutController@checkout')->name('checkout');

@@ -62,7 +62,6 @@
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script>
-        
         // Function to calculate and update the cart's total amount
         function updateCartTotal() {
             var total = 0;
@@ -120,7 +119,7 @@
             // Update the total price with 2 decimal places
             totalPriceSpan.textContent = '₹' + total.toFixed(2);
 
-            
+
         }
 
 
@@ -194,8 +193,8 @@
             // Clear the cart from localStorage
             localStorage.removeItem('cart');
 
-             // Refresh the cart items count on the page
-             updateCartItemCountOnPage();
+            // Refresh the cart items count on the page
+            updateCartItemCountOnPage();
         }
     </script>
 
@@ -258,25 +257,33 @@
                     cartItems: cartData
                 };
 
-                // Send the checkout data to the server (You will need to implement this part)
-                // Example using AJAX:
-                $.ajax({
-                    url: '/checkout', // Replace with the actual URL for your server endpoint
-                    method: 'POST',
-                    data: JSON.stringify(checkoutData),
-                    contentType: 'application/json',
-                    success: function(response) {
+
+                // Send the checkout data to the server
+                fetch('/checkout', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add the CSRF token
+                        },
+                        body: JSON.stringify(checkoutData),
+                    })
+                    .then(function(response) {
                         // Handle the server response here (e.g., display a success message)
-                        console.log('Checkout successful:', response);
+                        return response.json();
+                    })
+                    .then(function(data) {
+                        console.log('Checkout successful:', data);
 
                         // Clear the cart after successful checkout
                         clearCart();
-                    },
-                    error: function(error) {
+                    })
+                    .catch(function(error) {
                         // Handle any errors from the server
                         console.error('Checkout error:', error);
-                    }
-                });
+                    });
+
+
+
             });
         });
     </script>
