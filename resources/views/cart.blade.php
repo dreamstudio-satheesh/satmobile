@@ -221,7 +221,7 @@
         // Add an event listener to the customer select element
         $('#myDropdown').on('change', function() {
 
-            console.log('call change');
+            
             // Get the selected customer ID
             var selectedCustomerId = $(this).val();
 
@@ -245,6 +245,9 @@
             // Event listener for the "Checkout Now" button
             document.getElementById('checkoutButton').addEventListener('click', function(event) {
                 event.preventDefault();
+
+
+                console.log('check selectedCustomerId :', selectedCustomerId);
 
                 // Check if a customer is selected
                 if (selectedCustomerId === 'Select Customer') {
