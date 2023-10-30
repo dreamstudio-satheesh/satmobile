@@ -225,6 +225,8 @@
             // Get the selected customer ID
             var selectedCustomerId = $(this).val();
 
+            console.log('call selectedCustomerId :', selectedCustomerId);
+
             // Check if a customer is selected (not empty)
             if (selectedCustomerId) {
                 // Store the selected customer ID in localStorage
