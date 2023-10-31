@@ -186,103 +186,86 @@
 
 
 
-    <script>
-        $(document).ready(function() {
-            $('#myDropdown').select2();
+  <script>
+    $(document).ready(function() {
+    $('#myDropdown').select2();
 
+    // Check if there is a previously selected customer in localStorage
+    var storedCustomerId = localStorage.getItem('selectedCustomerId');
+    console.log('localStorage CustomerId :', storedCustomerId);
 
+    // If a customer ID is stored in localStorage, select it in the dropdown
+    if (storedCustomerId) {
+        $('#myDropdown').val(storedCustomerId).trigger('change'); // Set the selected value in the dropdown and trigger change
+    }
 
-            // Add an event listener to the customer select element
-            $('#myDropdown').on('change', function() {
+    // Add an event listener to the customer select element
+    $('#myDropdown').on('change', function() {
+        // Get the selected customer ID
+        var selectedCustomerId = $(this).val();
+        console.log('call selectedCustomerId :', selectedCustomerId);
 
+        // Check if a customer is selected (don't have value "Select Customer")
+        if (selectedCustomerId !== 'Select Customer') {
+            // Store the selected customer ID in localStorage
+            localStorage.setItem('selectedCustomerId', selectedCustomerId);
+            console.log('store selectedCustomerId');
+        } else {
+            // If no customer is selected, remove the stored value
+            localStorage.removeItem('selectedCustomerId');
+        }
+    });
+});
 
-                // Get the selected customer ID
-                var selectedCustomerId = $(this).val();
+document.addEventListener("DOMContentLoaded", function() {
+    // Event listener for the "Checkout Now" button
+    document.getElementById('checkoutButton').addEventListener('click', function(event) {
+        event.preventDefault();
 
-                console.log('call selectedCustomerId :', selectedCustomerId);
+        // Get the selected customer ID from the dropdown
+        var selectedCustomerId = $('#myDropdown').val();
+        console.log('check selectedCustomerId :', selectedCustomerId);
 
-                // Check if a customer is selected (dont have value Select Customer)
-                if (selectedCustomerId !== 'Select Customer') {
-                    // Store the selected customer ID in localStorage
-                    localStorage.setItem('selectedCustomerId', selectedCustomerId);
-                    console.log('store selectedCustomerId');
-                } else {
-                    // If no customer is selected, remove the stored value
-                    localStorage.removeItem('selectedCustomerId');
-                }
+        // Check if a customer is selected
+        if (selectedCustomerId === 'Select Customer') {
+            alert('Please select a customer first.');
+            return;
+        }
+
+        // Retrieve the cart data from local storage
+        var cartData = JSON.parse(localStorage.getItem('cart')) || {};
+
+        // Create an object to hold the checkout data
+        var checkoutData = {
+            customerId: selectedCustomerId,
+            cartItems: cartData
+        };
+
+        // Send the checkout data to the server
+        fetch('/checkout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add the CSRF token
+                },
+                body: JSON.stringify(checkoutData),
+            })
+            .then(function(response) {
+                // Handle the server response here (e.g., display a success message)
+                return response.json();
+            })
+            .then(function(data) {
+                console.log('Checkout successful:', data);
+
+                // Clear the cart after successful checkout
+                clearCart();
+            })
+            .catch(function(error) {
+                // Handle any errors from the server
+                console.error('Checkout error:', error);
             });
+    });
+});
 
-        });
-
-
-
-
-        document.addEventListener("DOMContentLoaded", function() {
-
-            // Get the selected customer ID from the dropdown
-            var selectedCustomerId = $('#myDropdown').val();
-
-            // Check if there is a previously selected customer in localStorage
-            var storedCustomerId = localStorage.getItem('selectedCustomerId');
-
-            // If a customer ID is stored in localStorage, select it in the dropdown
-            if (storedCustomerId) {
-                // Use the correct variable here (selectedCustomerId)
-                selectedCustomerId = storedCustomerId;
-                $('#myDropdown').val(selectedCustomerId); // Set the selected value in the dropdown
-            }
-
-
-            // Event listener for the "Checkout Now" button
-            document.getElementById('checkoutButton').addEventListener('click', function(event) {
-                event.preventDefault();
-
-
-                console.log('check selectedCustomerId :', selectedCustomerId);
-
-                // Check if a customer is selected
-                if (selectedCustomerId === 'Select Customer') {
-                    alert('Please select a customer first.');
-                    return;
-                }
-
-                // Retrieve the cart data from local storage
-                var cartData = JSON.parse(localStorage.getItem('cart')) || {};
-
-                // Create an object to hold the checkout data
-                var checkoutData = {
-                    customerId: selectedCustomerId,
-                    cartItems: cartData
-                };
-
-
-                // Send the checkout data to the server
-                fetch('/checkout', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add the CSRF token
-                        },
-                        body: JSON.stringify(checkoutData),
-                    })
-                    .then(function(response) {
-                        // Handle the server response here (e.g., display a success message)
-                        return response.json();
-                    })
-                    .then(function(data) {
-                        console.log('Checkout successful:', data);
-
-                        // Clear the cart after successful checkout
-                        clearCart();
-                    })
-                    .catch(function(error) {
-                        // Handle any errors from the server
-                        console.error('Checkout error:', error);
-                    });
-
-
-
-            });
-        });
-    </script>
+  </script>
 @endpush
