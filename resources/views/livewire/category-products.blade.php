@@ -61,7 +61,7 @@
                     <div class="col-6 col-md-4">
                         <div class="card product-card">
                             <div class="card-body">
-                                <!-- Badge--><span class="badge rounded-pill badge-success">New</span>
+                                <!-- Badge--><span class="badge rounded-pill badge-success">{{ $product->code }}</span>
                                 <!-- Wishlist Button--><a class="wishlist-btn" href="#"><i
                                         class="fa-solid fa-heart">
                                     </i></a>
