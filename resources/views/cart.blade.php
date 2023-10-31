@@ -192,7 +192,6 @@
 
     // Check if there is a previously selected customer in localStorage
     var storedCustomerId = localStorage.getItem('selectedCustomerId');
-    console.log('localStorage CustomerId :', storedCustomerId);
 
     // If a customer ID is stored in localStorage, select it in the dropdown
     if (storedCustomerId) {
@@ -203,13 +202,12 @@
     $('#myDropdown').on('change', function() {
         // Get the selected customer ID
         var selectedCustomerId = $(this).val();
-        console.log('call selectedCustomerId :', selectedCustomerId);
 
         // Check if a customer is selected (don't have value "Select Customer")
         if (selectedCustomerId !== 'Select Customer') {
             // Store the selected customer ID in localStorage
             localStorage.setItem('selectedCustomerId', selectedCustomerId);
-            console.log('store selectedCustomerId');
+            
         } else {
             // If no customer is selected, remove the stored value
             localStorage.removeItem('selectedCustomerId');
@@ -224,7 +222,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Get the selected customer ID from the dropdown
         var selectedCustomerId = $('#myDropdown').val();
-        console.log('check selectedCustomerId :', selectedCustomerId);
 
         // Check if a customer is selected
         if (selectedCustomerId === 'Select Customer') {
