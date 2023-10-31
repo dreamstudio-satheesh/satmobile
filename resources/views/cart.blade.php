@@ -14,7 +14,6 @@
         </div>
     </div>
 
-
     <div class="container">
         <!-- Cart Wrapper-->
         <div class="cart-wrapper-area py-3">
@@ -48,9 +47,6 @@
 
                 </div>
             </div>
-
-
-
         </div>
     </div>
 @endsection
@@ -153,9 +149,6 @@
         }
 
 
-
-
-
         // Function to remove a product from the cart
         function removeFromCart(productId) {
             // Remove the product from cartData
@@ -171,13 +164,6 @@
             // Update the cart items count on the page  
             updateCartItemCountOnPage();
         }
-
-
-
-
-
-
-
 
 
 
