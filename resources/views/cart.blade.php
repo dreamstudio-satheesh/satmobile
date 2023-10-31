@@ -219,6 +219,7 @@
                 if (selectedCustomerId !== 'Select Customer') {
                     // Store the selected customer ID in localStorage
                     localStorage.setItem('selectedCustomerId', selectedCustomerId);
+                    console.log('store selectedCustomerId');
                 } else {
                     // If no customer is selected, remove the stored value
                     localStorage.removeItem('selectedCustomerId');
