@@ -203,30 +203,28 @@
     <script>
         $(document).ready(function() {
             $('#myDropdown').select2();
-
-
-            // Add an event listener to the customer select element
-            $('#myDropdown').on('change', function() {
-
-                // Get the selected customer ID
-                var selectedCustomerId = $(this).val();
-
-                console.log('call selectedCustomerId :', selectedCustomerId);
-
-                // Check if a customer is selected (not empty)
-                if (selectedCustomerId) {
-                    // Store the selected customer ID in localStorage
-                    localStorage.setItem('selectedCustomerId', selectedCustomerId);
-                } else {
-                    // If no customer is selected, remove the stored value
-                    localStorage.removeItem('selectedCustomerId');
-                }
-            });
-
         });
 
 
 
+        // Add an event listener to the customer select element
+        $('#myDropdown').on('change', function() {
+
+
+            // Get the selected customer ID
+            var selectedCustomerId = $(this).val();
+
+            console.log('call selectedCustomerId :', selectedCustomerId);
+
+            // Check if a customer is selected (dont have value Select Customer)
+            if (selectedCustomerId !== 'Select Customer') {
+                // Store the selected customer ID in localStorage
+                localStorage.setItem('selectedCustomerId', selectedCustomerId);
+            } else {
+                // If no customer is selected, remove the stored value
+                localStorage.removeItem('selectedCustomerId');
+            }
+        });
 
 
 
