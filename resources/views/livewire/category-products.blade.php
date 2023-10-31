@@ -62,8 +62,7 @@
                         <div class="card product-card">
                             <div class="card-body">
                                 <!-- Badge--><span class="badge rounded-pill badge-success">{{ $product->code }}</span>
-                                <!-- Wishlist Button--><a class="wishlist-btn" href="#"><i
-                                        class="fa-solid fa-heart">
+                                <!-- Wishlist Button--><a class="wishlist-btn" href="#">{{ $product->price }}</a>
                                     </i></a>
                                 <!-- Thumbnail --><a class="product-thumbnail d-block" href="#"
                                     data-product-id="{{ $product->id }}" data-product-name="{{ $product->name }}"
