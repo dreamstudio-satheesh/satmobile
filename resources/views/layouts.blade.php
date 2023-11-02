@@ -152,9 +152,12 @@
         <script src="js/pwa.js"></script>
 
         <script>
+            // Cart data variable
+            var cartData = JSON.parse(localStorage.getItem('cart')) || {};
+            
             // Function to calculate and update the cart items count
             function updateCartItemCount() {
-                var cartData = JSON.parse(localStorage.getItem('cart')) || {};
+                
                 return Object.keys(cartData).length;
             }
 
