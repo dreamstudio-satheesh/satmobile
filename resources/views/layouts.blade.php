@@ -152,28 +152,17 @@
         <script src="js/pwa.js"></script>
 
         <script>
-            // Retrieve cart data from localStorage
-            var cartData = JSON.parse(localStorage.getItem('cart')) || {};
-
             // Function to calculate and update the cart items count
             function updateCartItemCount() {
                 var cartData = JSON.parse(localStorage.getItem('cart')) || {};
-                var totalCount = 0;
-                for (var productId in cartData) {
-                    totalCount += cartData[productId].quantity;
-                }
-                return totalCount;
+                return Object.keys(cartData).length;
             }
+
 
             // Function to update the cart items count on the page
             function updateCartItemCountOnPage() {
                 // Calculate and update the cart items count
                 var itemCount = updateCartItemCount();
-
-                console.log('call itemCount :'.itemCount);
-
-               
-
                 // Get the cart items count element by its id "cartItemCount"
                 var cartItemCountSpan = document.getElementById('cartItemCount');
 
@@ -190,8 +179,6 @@
                 updateCartItemCountOnPage();
             });
 
-            // Call the updateCartItemCountOnPage function whenever needed
-            // For example, you can call it after adding or removing items from the cart
         </script>
         @stack('scripts')
 
