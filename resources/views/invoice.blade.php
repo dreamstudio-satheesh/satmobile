@@ -28,12 +28,12 @@
                 <div class="text-list-desc">01:00</div>
             </li>
             <li>
-                <div class="text-list-title">Branch:</div>
-                <div class="text-list-desc">Dhaka</div>
+                <div class="text-list-title"> {{ $invoice->customer->name}}:</div>
+                <div class="text-list-desc"> {{ $invoice->customer->address}}</div>
             </li>
             <li class="text-right">
-                <div class="text-list-title">Receipt:</div>
-                <div class="text-list-desc">#L21387</div>
+                <div class="text-list-title">Invoice:</div>
+                <div class="text-list-desc">#{{ str_pad($invoice->invoice_number, 4, '0', STR_PAD_LEFT) }}/23-24</div>
             </li>
         </ul>
         <table class="receipt-table">
@@ -52,54 +52,7 @@
                     <td>3</td>
                     <td>$10</td>
                 </tr>
-                <tr>
-                    <td>Biscuit & Bakery.</td>
-                    <td>$20</td>
-                    <td>2</td>
-                    <td>$20</td>
-                </tr>
-                <tr>
-                    <td>Culinary.</td>
-                    <td>$40</td>
-                    <td>3</td>
-                    <td>$40</td>
-                </tr>
-                <tr>
-                    <td>Dairy</td>
-                    <td>$50</td>
-                    <td>4</td>
-                    <td>$50</td>
-                </tr>
-                <tr>
-                    <td>Noluisse</td>
-                    <td>$20</td>
-                    <td>3</td>
-                    <td>$20</td>
-                </tr>
-                <tr>
-                    <td>Culinary.</td>
-                    <td>$40</td>
-                    <td>3</td>
-                    <td>$40</td>
-                </tr>
-                <tr>
-                    <td>Dairy</td>
-                    <td>$70</td>
-                    <td>1</td>
-                    <td>$70</td>
-                </tr>
-                <tr>
-                    <td>Confectionery.</td>
-                    <td>$58</td>
-                    <td>2</td>
-                    <td>$58</td>
-                </tr>
-                <tr>
-                    <td>Dairy</td>
-                    <td>$90</td>
-                    <td>1</td>
-                    <td>$64</td>
-                </tr>
+              
             </tbody>
         </table>
         <div class="text-bill-list mb-15">
@@ -135,7 +88,7 @@
             <img src="assets/images/bar-code.png" alt="img">
         </div> --}}
         <div class="receipt-top">
-            <div class="company-name">SAT Sweets</div>
+            <div class="company-name">SAT SWEETS</div>
             <div class="company-address">3/147 Karunaipalayam Pirivu,  Covai-</div>
             <div class="company-address">Tiruchy Main Road, Kangeyam -638701</div>
             <div class="company-mobile">GST NO :33ATOPR7702H1ZF</div>
