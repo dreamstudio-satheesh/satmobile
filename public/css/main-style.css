@@ -24213,11 +24213,11 @@ hr {
 
 .receipt-table td {
   padding: 4px;
+  font-size: xx-small;
 }
 
 .receipt-table tbody tr:first-child td {
   padding-top: 10px;
-  font-size: smaller;
 }
 
 .receipt-table tbody tr:last-child td {
