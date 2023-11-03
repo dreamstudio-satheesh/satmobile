@@ -83,11 +83,12 @@ class HomeController extends Controller
 
     public function cart()
     {
-       dd(auth()->user()->hasRole('user'));
+       
        
         if(auth()->user()->hasRole('user') && auth()->user()->user_line_id){
                       
             $customers = Customer::where('line_id', auth()->user()->user_line_id)->get();
+            dd($customers);
             
         }elseif(auth()->user()->hasRole('user') && auth()->user()->line_id){
 
