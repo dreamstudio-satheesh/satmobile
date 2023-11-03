@@ -61,7 +61,12 @@ class HomeController extends Controller
         
     }
 
-    function selectline() {
+    public function selectline() {
+        $user =Auth::user();
+        $user->user_line_id = $request['line_id'];
+        $user->save();
+
+        return redirect('cart')->withSuccess('Updated');
         
     }
 
