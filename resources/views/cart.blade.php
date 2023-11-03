@@ -4,7 +4,7 @@
     <!-- Search Form-->
     <div class="container">
         <div>
-            <div class="form-group">
+            <div class="form-group pt-3">
 
                 <input type="date" id="dateInput" class="form-control form-control-sm" required>
             </div>
