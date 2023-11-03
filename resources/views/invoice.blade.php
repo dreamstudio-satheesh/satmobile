@@ -51,7 +51,7 @@
                     <tr>
                         <td>{{ $item->name }}</td>
                         <td>{{ number_format($item->price, 2) }}</td>
-                        <td>{{ number_format($item->quantity, 2) }}</td>
+                        <td>{{ str_pad($item->quantity , 2, '0', STR_PAD_LEFT) }}</td>
                         <td>{{ number_format($item->quantity * $item->price, 2) }}</td>
                     </tr>
                 @endforeach
