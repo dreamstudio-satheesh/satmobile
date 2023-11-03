@@ -29,7 +29,7 @@ class HomeController extends Controller
         return view('home');
     }
 
-    function invoice($id) 
+    public function invoice($id) 
     {
         $invoice = Invoice::withTrashed()->with(['invoice_items','customer'])->where('id',$id)->first();
         if ($invoice) {
@@ -59,6 +59,15 @@ class HomeController extends Controller
         return view('invoice', compact('invoice','fivegst','twelvegst','subtotal'));
         }
         
+    }
+
+    function selectline() {
+        
+    }
+
+    public function settings() 
+    {
+        return view('settings');
     }
 
 

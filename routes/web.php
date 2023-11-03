@@ -13,9 +13,6 @@ route::get('/login.html', function () {
     return view('auth.login');
 });
 
-Route::get('/settings.html', function () {
-    return view('settings');
-});
 Route::get('/auth/logout', [LoginController::class, 'authlogout'])->name('auth.logout');
 
 Auth::routes([
@@ -38,6 +35,9 @@ Route::middleware(['auth'])->group(function () {
 
     // get rounte for invoice
     Route::get('/invoice/{id}', [HomeController::class, 'invoice'])->name('invoice');
+
+    Route::get('/settings.html', [HomeController::class, 'settings'])->name('settings');
+    Route::post('/selectline', [HomeController::class, 'selectline'])->name('selectline');
 });
 
 // routes/web.php
