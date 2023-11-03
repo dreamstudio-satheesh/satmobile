@@ -26,8 +26,8 @@
             <div class="company-address">Tiruchy Main Road, Kangeyam -638701</div>
             <div class="company-mobile">GST NO :33ATOPR7702H1ZF</div>
         </div>
-        <div class="text-receipt-seperator"></div>
         
+
         <div class="receipt-heading"><span>Invoice</span></div>
         <ul class="text-list text-style1 mb-20">
             <li>
