@@ -3,8 +3,14 @@
 @section('content')
     <!-- Search Form-->
     <div class="container">
+        <div>
+            <div class="form-group">
+                
+                <input  type="date" id="dateInput" class="form-control form-control-sm" required>
+            </div>
+        </div>
         <div class="search-form pt-3 rtl-flex-d-row-r">
-            <select id="myDropdown" class="form-control form-select" aria-label="Select Customer">
+            <select id="myDropdown" class="form-select" aria-label="Select Customer">
                 <option selected>Select Customer</option>
                 @foreach ($customers as $customer)
                     <option value="{{ $customer->id }}">{{ $customer->name }} - {{ Str::limit($customer->address, 20) }}
@@ -12,12 +18,7 @@
                 @endforeach
             </select>
         </div>
-        <div>
-            <div class="form-group">
-                
-                <input  type="date" id="dateInput" class="form-control form-control-sm" required>
-            </div>
-        </div>
+       
     </div>
 
     <div class="container">
