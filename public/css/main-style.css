@@ -24119,6 +24119,7 @@ hr {
 
 .receipt-top {
   text-align: center;
+  font-size: smaller;
   margin-bottom: 18px;
 }
 
@@ -24275,7 +24276,7 @@ hr {
 .company-name {
   font-weight: 500;
   color: var(--primary-title);
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.4em;
   margin-bottom: 10px;
 }
