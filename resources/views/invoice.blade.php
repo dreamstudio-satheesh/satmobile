@@ -40,7 +40,11 @@
             </li>
             <li>
                 <div class="text-list-title"> {{ $invoice->customer->name }}:</div>
-                <div class="text-list-desc"></div>
+                <div class="text-list-desc">
+                    @if ($invoice->customer->gstnumber)
+                        {{ $invoice->customer->gstnumber }}
+                    @endif
+                </div>
             </li>
             <li class="text-right">
                 <div class="text-list-title"></div>
@@ -61,7 +65,7 @@
                     <tr>
                         <td>{{ $item->name }}</td>
                         <td>{{ number_format($item->price, 2) }}</td>
-                        <td>{{ str_pad($item->quantity , 2, '0', STR_PAD_LEFT) }}</td>
+                        <td>{{ str_pad($item->quantity, 2, '0', STR_PAD_LEFT) }}</td>
                         <td>{{ number_format($item->quantity * $item->price, 2) }}</td>
                     </tr>
                 @endforeach
@@ -121,7 +125,7 @@
         {{--  <div class="tm_pos_sample_text mb-15">
             <img src="assets/images/bar-code.png" alt="img">
         </div> --}}
-        
+
     </main>
 
 </body>
