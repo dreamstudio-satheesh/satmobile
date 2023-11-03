@@ -86,8 +86,6 @@ class HomeController extends Controller
        
        
         if(auth()->user()->hasRole('user') && auth()->user()->user_line_id){
-            dd(auth()->user()->user_line_id);
-                      
             $customers = Customer::where('line_id', auth()->user()->user_line_id)->get();
             
         }elseif(auth()->user()->hasRole('user') && auth()->user()->line_id){
