@@ -30,8 +30,33 @@ class HomeController extends Controller
 
     function invoice($id) 
     {
-        
-        return view('invoice', compact('id'));
+        $invoice = Invoice::withTrashed()->with(['invoice_items','customer'])->where('id',$id)->first();
+        if ($invoice) {
+            // return $invoice->invoice_items;
+             $fivetotal=0; $twelvetotal=0; 
+             $fivegst=0; $twelvegst=0; 
+             
+             foreach ($invoice->invoice_items as $item) {
+                // return $item;
+                 if ($item->gst == 5) {
+                    $fivetotal += $item->total;
+                 }elseif ($item->gst == 12) {
+                     $twelvetotal += $item->total;
+                   // $twelvegst =$twelvegst+ ($item->gstamount  * $item->quantity );
+                 }
+ 
+             }
+             if ($fivetotal > 0) {
+                 $fivegst=$fivetotal-($fivetotal*(100/(100+5))) ;
+             }
+ 
+             if ($twelvetotal > 0) {
+                 $twelvegst=$twelvetotal-($twelvetotal*(100/(100+12))) ;
+             } 
+             
+             $subtotal=$invoice->total - ($fivegst + $twelvegst) ;
+        return view('invoice', compact('invoice','fivegst','twelvegst','subtotal'));
+        }
         
     }
 

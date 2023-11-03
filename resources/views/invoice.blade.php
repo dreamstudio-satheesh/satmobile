@@ -17,7 +17,7 @@
 </head>
 <body class="section-bg-one">
     <main class="container receipt-wrapper" id="download-section">
-        <div class="receipt-heading"><span>cash memo</span></div>
+        <div class="receipt-heading"><span>Invoice</span></div>
         <ul class="text-list text-style1 mb-20">
             <li>
                 <div class="text-list-title">Date:</div>
@@ -131,13 +131,14 @@
                 <div class="text-bill-value text-bill-focus">985.00$</div>
             </div>
         </div>
-        <div class="tm_pos_sample_text mb-15">
+       {{--  <div class="tm_pos_sample_text mb-15">
             <img src="assets/images/bar-code.png" alt="img">
-        </div>
+        </div> --}}
         <div class="receipt-top">
-            <div class="company-name">initTheme Limited</div>
-            <div class="company-address">1216 R. Dhaka, Mirpur,  Bangladesh</div>
-            <div class="company-mobile">Email: inittheme@gmail.com</div>
+            <div class="company-name">SAT Sweets</div>
+            <div class="company-address">3/147 Karunaipalayam Pirivu,  Covai-Tiruchy Main Road,</div>
+            <div class="company-address"> Kangeyam -638701 Mobile: 90874 49924 <Span class="text-0 fw-400"> GST NO :33ATOPR7702H1ZF</Span></div>
+            <div class="company-mobile">Email: satsweets@gmail.com</div>
         </div>
         <div class="mb-0">
             <span class="text-uppercase text-12 bg-title text-white pa-10 d-block text-center">call fro home delivery +3254158245</span>
