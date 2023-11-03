@@ -10,10 +10,10 @@
     <meta name="author" content="initTheme">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>SAT SWEETS - invoice  </title>
-    <link rel="icon" href="img/icons/icon-72x72.png">
+    <link rel="icon" href="{{ url('img/icons/icon-72x72.png')}}">
     
     <!-- Style -->
-    <link rel="stylesheet" type="text/css" href="css/main-style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main-style.css')}}">
 </head>
 <body class="section-bg-one">
     <main class="container receipt-wrapper" id="download-section">
