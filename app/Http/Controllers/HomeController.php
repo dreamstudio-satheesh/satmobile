@@ -62,7 +62,7 @@ class HomeController extends Controller
         
     }
 
-    public function selectline() {
+    public function selectline(Request $request) {
         $user =Auth::user();
         $user->user_line_id = $request['line_id'];
         $user->save();
