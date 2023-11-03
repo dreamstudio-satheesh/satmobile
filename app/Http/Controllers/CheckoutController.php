@@ -10,6 +10,7 @@ class CheckoutController extends Controller
     {
         // Retrieve the customer ID and cart items from the request
         $customerId = $request->input('customerId');
+        $invoice_date= $request->input('invoiceDate');
         $cartItems = $request->input('cartItems');
 
         // Perform any necessary validation and business logic here

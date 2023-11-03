@@ -225,7 +225,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     // Set the current date in the date input
-
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -242,6 +241,9 @@ document.addEventListener("DOMContentLoaded", function() {
         // Get the selected customer ID from the dropdown
         var selectedCustomerId = $('#myDropdown').val();
 
+        // Get date input value
+        var dateInput = document.getElementById('dateInput').value;
+
         // Check if a customer is selected
         if (selectedCustomerId === 'Select Customer') {
             alert('Please select a customer first.');
@@ -254,6 +256,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Create an object to hold the checkout data
         var checkoutData = {
             customerId: selectedCustomerId,
+            invoiceDate: dateInput,
             cartItems: cartData
         };
 
