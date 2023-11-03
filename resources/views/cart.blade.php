@@ -195,7 +195,6 @@
         document.addEventListener("DOMContentLoaded", function() {
             var customersData = @json($customers);
 
-            localStorage.setItem('customers', JSON.stringify(customersData));
 
             // Check if customers data is already in local storage, if not, store it
             if (!localStorage.getItem('customers')) {
