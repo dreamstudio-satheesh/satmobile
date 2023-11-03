@@ -48,4 +48,4 @@ Route::get('/cart.html', [App\Http\Controllers\HomeController::class, 'cart'])->
 
 // routes/web.php
 
-Route::post('/checkout',  [App\Http\Controllers\CheckoutController::class, 'cart'])->name('checkout');
+Route::post('/checkout',  [App\Http\Controllers\CheckoutController::class, 'checkout'])->name('checkout');
