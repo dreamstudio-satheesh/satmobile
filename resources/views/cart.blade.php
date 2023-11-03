@@ -256,8 +256,8 @@
 
                 // Create an object to hold the checkout data
                 var checkoutData = {
-                    customerId: selectedCustomerId,
-                    invoiceDate: dateInput,
+                   // customerId: selectedCustomerId,
+                   // invoiceDate: dateInput,
                     cartItems: cartData
                 };
 
