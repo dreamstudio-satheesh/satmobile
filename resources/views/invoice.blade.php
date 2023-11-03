@@ -18,7 +18,7 @@
 
 <body class="section-bg-one">
     <main class="container receipt-wrapper" id="download-section">
-        <div class="receipt-heading"><span>Invoice</span></div>
+       
 
         <div class="receipt-top">
             <div class="company-name">SAT SWEETS</div>
@@ -27,6 +27,8 @@
             <div class="company-mobile">GST NO :33ATOPR7702H1ZF</div>
         </div>
         <div class="text-receipt-seperator"></div>
+        
+        <div class="receipt-heading"><span>Invoice</span></div>
         <ul class="text-list text-style1 mb-20">
             <li>
                 <div class="text-list-title">Date:</div>
