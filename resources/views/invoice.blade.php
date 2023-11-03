@@ -136,8 +136,8 @@
         </div> --}}
         <div class="receipt-top">
             <div class="company-name">SAT Sweets</div>
-            <div class="company-address">3/147 Karunaipalayam Pirivu,  Covai-Tiruchy </div>
-            <div class="company-address">Main Road, Kangeyam -638701 Mobile: 90874 49924</div>
+            <div class="company-address">3/147 Karunaipalayam Pirivu,  Covai-</div>
+            <div class="company-address">Tiruchy Main Road, Kangeyam -638701 Mobile: 90874 49924</div>
             <div class="company-mobile">GST NO :33ATOPR7702H1ZF</div>
         </div>
         <div class="mb-0">
