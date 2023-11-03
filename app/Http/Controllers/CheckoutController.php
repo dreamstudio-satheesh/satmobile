@@ -22,6 +22,7 @@ class CheckoutController extends Controller
             'invoiceDate' => $invoice_date,
             'cartItems' => $cartItems,
         ];
+        return response()->json(['message' => 'Checkout successful']);
 
         return response()->json($response);
     }

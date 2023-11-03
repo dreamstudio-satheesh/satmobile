@@ -5,8 +5,8 @@
     <div class="container">
         <div>
             <div class="form-group">
-                
-                <input  type="date" id="dateInput" class="form-control form-control-sm" required>
+
+                <input type="date" id="dateInput" class="form-control form-control-sm" required>
             </div>
         </div>
         <div class="search-form pt-3 rtl-flex-d-row-r">
@@ -18,7 +18,7 @@
                 @endforeach
             </select>
         </div>
-       
+
     </div>
 
     <div class="container">
@@ -193,98 +193,98 @@
 
 
 
-  <script>
-    $(document).ready(function() {
-    $('#myDropdown').select2();
+    <script>
+        $(document).ready(function() {
+            $('#myDropdown').select2();
 
-    // Check if there is a previously selected customer in localStorage
-    var storedCustomerId = localStorage.getItem('selectedCustomerId');
+            // Check if there is a previously selected customer in localStorage
+            var storedCustomerId = localStorage.getItem('selectedCustomerId');
 
-    // If a customer ID is stored in localStorage, select it in the dropdown
-    if (storedCustomerId) {
-        $('#myDropdown').val(storedCustomerId).trigger('change'); // Set the selected value in the dropdown and trigger change
-    }
+            // If a customer ID is stored in localStorage, select it in the dropdown
+            if (storedCustomerId) {
+                $('#myDropdown').val(storedCustomerId).trigger(
+                'change'); // Set the selected value in the dropdown and trigger change
+            }
 
-    // Add an event listener to the customer select element
-    $('#myDropdown').on('change', function() {
-        // Get the selected customer ID
-        var selectedCustomerId = $(this).val();
+            // Add an event listener to the customer select element
+            $('#myDropdown').on('change', function() {
+                // Get the selected customer ID
+                var selectedCustomerId = $(this).val();
 
-        // Check if a customer is selected (don't have value "Select Customer")
-        if (selectedCustomerId !== 'Select Customer') {
-            // Store the selected customer ID in localStorage
-            localStorage.setItem('selectedCustomerId', selectedCustomerId);
-            
-        } else {
-            // If no customer is selected, remove the stored value
-            localStorage.removeItem('selectedCustomerId');
-        }
-    });
-});
+                // Check if a customer is selected (don't have value "Select Customer")
+                if (selectedCustomerId !== 'Select Customer') {
+                    // Store the selected customer ID in localStorage
+                    localStorage.setItem('selectedCustomerId', selectedCustomerId);
 
-document.addEventListener("DOMContentLoaded", function() {
-
-    // Set the current date in the date input
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-
-    today = yyyy + '-' + mm + '-' + dd;
-    document.getElementById('dateInput').value = today;
-
-
-    // Event listener for the "Checkout Now" button
-    document.getElementById('checkoutButton').addEventListener('click', function(event) {
-        event.preventDefault();
-
-        // Get the selected customer ID from the dropdown
-        var selectedCustomerId = $('#myDropdown').val();
-
-        // Get date input value
-        var dateInput = document.getElementById('dateInput').value;
-
-        // Check if a customer is selected
-        if (selectedCustomerId === 'Select Customer') {
-            alert('Please select a customer first.');
-            return;
-        }
-
-        // Retrieve the cart data from local storage
-        var cartData = JSON.parse(localStorage.getItem('cart')) || {};
-
-        // Create an object to hold the checkout data
-        var checkoutData = {
-            customerId: selectedCustomerId,
-            invoiceDate: dateInput,
-            cartItems: cartData
-        };
-
-        // Send the checkout data to the server
-        fetch('/checkout', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add the CSRF token
-                },
-                body: JSON.stringify(checkoutData),
-            })
-            .then(function(response) {
-                // Handle the server response here (e.g., display a success message)
-                return response.json();
-            })
-            .then(function(data) {
-                console.log('Checkout successful:', data);
-
-                // Clear the cart after successful checkout
-                clearCart();
-            })
-            .catch(function(error) {
-                // Handle any errors from the server
-                console.error('Checkout error:', error);
+                } else {
+                    // If no customer is selected, remove the stored value
+                    localStorage.removeItem('selectedCustomerId');
+                }
             });
-    });
-});
+        });
 
-  </script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            // Set the current date in the date input
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+
+            today = yyyy + '-' + mm + '-' + dd;
+            document.getElementById('dateInput').value = today;
+
+
+            // Event listener for the "Checkout Now" button
+            document.getElementById('checkoutButton').addEventListener('click', function(event) {
+                event.preventDefault();
+
+                // Get the selected customer ID from the dropdown
+                var selectedCustomerId = $('#myDropdown').val();
+
+                // Get date input value
+                var dateInput = document.getElementById('dateInput').value;
+
+                // Check if a customer is selected
+                if (selectedCustomerId === 'Select Customer') {
+                    alert('Please select a customer first.');
+                    return;
+                }
+
+                // Retrieve the cart data from local storage
+                var cartData = JSON.parse(localStorage.getItem('cart')) || {};
+
+                // Create an object to hold the checkout data
+                var checkoutData = {
+                    customerId: selectedCustomerId,
+                    invoiceDate: dateInput,
+                    cartItems: cartData
+                };
+
+                // Send the checkout data to the server
+                fetch('/checkout', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add the CSRF token
+                        },
+                        body: JSON.stringify(checkoutData),
+                    })
+                    .then(function(response) {
+                        // Handle the server response here (e.g., display a success message)
+                        return response.json();
+                    })
+                    .then(function(data) {
+                        console.log('Checkout successful:', data);
+
+                        // Clear the cart after successful checkout
+                        clearCart();
+                    })
+                    .catch(function(error) {
+                        // Handle any errors from the server
+                        console.error('Checkout error:', error);
+                    });
+            });
+        });
+    </script>
 @endpush
