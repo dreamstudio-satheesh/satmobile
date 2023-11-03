@@ -78,29 +78,19 @@ class HomeController extends Controller
 
     public function settings()
     {
-        $line = auth()->user()->line_id;
+        $line = Auth::user()->line_id;
         $lines = Line::where('line', $line)->get();
         return view('settings', compact('lines'));
     }
 
     public function cart()
     {
-        if (
-            auth()
-                ->user()
-                ->hasRole('user') &&
-            auth()->user()->user_line_id
-        ) {
+        if (Auth::user()->hasRole('user') && Auth::user()->user_line_id) {
             $customers = Customer::select('id', 'name', 'address')
-                ->where('line_id', auth()->user()->user_line_id)
+                ->where('line_id', Auth::user()->user_line_id)
                 ->get();
-        } elseif (
-            auth()
-                ->user()
-                ->hasRole('user') &&
-            auth()->user()->line_id
-        ) {
-            $lines = Line::where('line', auth()->user()->line_id)
+        } elseif (Auth::user()->hasRole('user') && Auth::user()->line_id) {
+            $lines = Line::where('line', Auth::user()->line_id)
                 ->select('id')
                 ->get()
                 ->toArray();
