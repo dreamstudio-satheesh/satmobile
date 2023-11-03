@@ -198,9 +198,11 @@
 
             // Check if customers data is already in local storage, if not, store it
             if (!localStorage.getItem('customers')) {
-                localStorage.setItem('customers', JSON.stringify(customersData));
-                console.log('Customers data stored in local storage.');
+               
             }
+
+            localStorage.setItem('customers', JSON.stringify(customersData));
+                console.log('Customers data stored in local storage.');
 
             // Retrieve customers from local storage
             var storedCustomers = JSON.parse(localStorage.getItem('customers')) || [];
