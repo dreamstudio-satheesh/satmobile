@@ -21,7 +21,7 @@
 
     </div>
 
-    <div class="container pb-5">
+    <div class="container pb-6">
         <!-- Cart Wrapper-->
         <div class="cart-wrapper-area py-3">
             <div class="cart-table card mb-3">
