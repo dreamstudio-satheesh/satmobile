@@ -192,6 +192,7 @@
 
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
         var customersData = @json($customers);
 
         localStorage.setItem('customers', JSON.stringify(customersData));
@@ -210,6 +211,8 @@
             dropdown.append(new Option(customer.name + ' - ' + customer.address.substring(0, 20),
                 customer.id));
         });
+
+    });
 
         $(document).ready(function() {
 
