@@ -27,7 +27,7 @@
                         
                         <div class="row">
                                 <div class="col-lg-12">
-                                        <input type="submit" class="btn btn-submit me-2" value="Submit">
+                                        <input type="submit" class="btn btn-primary" value="Submit">
                                         <a  onclick="history.back()" class="btn btn-cancel">Cancel</a>
                                 </div>
                         </div>
