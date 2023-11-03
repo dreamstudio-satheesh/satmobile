@@ -18,16 +18,16 @@
 
 <body class="section-bg-one">
     <main class="container receipt-wrapper" id="download-section">
-       
-
         <div class="receipt-top">
             <div class="company-name">SAT SWEETS</div>
             <div class="company-address">3/147 Karunaipalayam Pirivu, Covai-</div>
             <div class="company-address">Tiruchy Main Road, Kangeyam -638701</div>
             <div class="company-mobile">GST NO :33ATOPR7702H1ZF</div>
         </div>
-        
-
+        <div class="mb-0">
+            <span class="text-uppercase text-12 bg-title text-white pa-10 d-block text-center">Mobile: 90874
+                49924</span>
+        </div>
         <div class="receipt-heading"><span>Invoice</span></div>
         <ul class="text-list text-style1 mb-20">
             <li>
@@ -121,11 +121,7 @@
         {{--  <div class="tm_pos_sample_text mb-15">
             <img src="assets/images/bar-code.png" alt="img">
         </div> --}}
-       
-        <div class="mb-0">
-            <span class="text-uppercase text-12 bg-title text-white pa-10 d-block text-center">Mobile: 90874
-                49924</span>
-        </div>
+        
     </main>
 
 </body>
