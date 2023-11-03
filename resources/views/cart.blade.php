@@ -196,15 +196,13 @@
 
             var customersData = @json($customers);
 
-
-
             localStorage.setItem('customers', JSON.stringify(customersData));
 
-            // Check if customers data is already in local storage, if not, store it
+           /*  // Check if customers data is already in local storage, if not, store it
             if (!localStorage.getItem('customers')) {
                 localStorage.setItem('customers', JSON.stringify(customersData));
             }
-
+ */
             // Retrieve customers from local storage
             var storedCustomers = JSON.parse(localStorage.getItem('customers')) || [];
 
