@@ -58,9 +58,7 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    // Display a success message to the user
-                    alert(data.message);
-
+                  
                     // Redirect to cart.html
                     window.location.href = 'cart.html';
 
