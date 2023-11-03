@@ -11,8 +11,8 @@
                             <div class="form-group">
                                 <label>Select Line <span class="manitory">*</span></label>
                                 <select name="line_id" id="line" " class="form-control" >
-                                                    <option selected value="">-- Select Line --</option>
-                                                     @foreach ($lines as $line)
+                                                        <option selected value="">-- Select Line --</option>
+                                                          @foreach ($lines as $line)
                                     <option value="{{ $line->id }}">{{ $line->name }}</option>
                                     @endforeach
                                 </select>
@@ -58,13 +58,15 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                  
-                    // Redirect to cart.html
-                    window.location.href = 'cart.html';
 
                     // Clear selectedCustomerId and storedCustomers from local storage
                     localStorage.removeItem('selectedCustomerId');
                     localStorage.removeItem('storedCustomers');
+
+                    // Redirect to cart.html
+                    window.location.href = 'cart.html';
+
+
                 })
                 .catch(error => {
                     // Handle any errors from the server or network issues
