@@ -29,10 +29,10 @@
             </li>
             <li>
                 <div class="text-list-title"> {{ $invoice->customer->name}}:</div>
-                <div class="text-list-desc"> {{ $invoice->customer->address}}</div>
+                <div class="text-list-desc"></div>
             </li>
             <li class="text-right">
-                <div class="text-list-title">Invoice:</div>
+                <div class="text-list-title"></div>
                 <div class="text-list-desc">#{{ str_pad($invoice->invoice_number, 4, '0', STR_PAD_LEFT) }}/23-24</div>
             </li>
         </ul>
