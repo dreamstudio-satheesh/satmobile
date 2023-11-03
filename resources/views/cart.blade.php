@@ -200,6 +200,7 @@
             if (!localStorage.getItem('customers')) {
                 // Retrieve customers from the server
                 var customersData = @json($customers);
+                console.log(customersData);
                 localStorage.setItem('customers', JSON.stringify(customersData));
                 console.log('Customers data stored in local storage.');
 
