@@ -44,6 +44,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cart.html', [App\Http\Controllers\HomeController::class, 'cart'])->name('cart');
 
     Route::post('/checkout', [App\Http\Controllers\CheckoutController::class, 'checkout'])->name('checkout');
+
+    // get rounte for invoice
+    Route::get('/invoice/{id}', [App\Http\Controllers\HomeController::class, 'invoice'])->name('invoice');
 });
 
 // routes/web.php

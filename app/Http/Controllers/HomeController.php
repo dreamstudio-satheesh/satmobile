@@ -28,6 +28,13 @@ class HomeController extends Controller
         return view('home');
     }
 
+    function invoice($id) 
+    {
+        
+        return view('invoice', compact('id'));
+        
+    }
+
 
     public function cart()
     {
