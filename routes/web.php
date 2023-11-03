@@ -13,39 +13,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-route::get('/settings.html', function(){
+route::get('/settings.html', function () {
     return view('settings');
 })->middleware(Authenticate::class);
 
-route::get('/offline.html', function(){
+route::get('/offline.html', function () {
     return view('offline');
 });
 
-
-route::get('/login.html', function(){
+route::get('/login.html', function () {
     return view('auth.login');
 });
 
-Route::get('/auth/logout', [ App\Http\Controllers\Auth\LoginController::class, 'authlogout'])->name('auth.logout');
+Route::get('/auth/logout', [App\Http\Controllers\Auth\LoginController::class, 'authlogout'])->name('auth.logout');
 
 Auth::routes([
-
     'register' => false, // Register Routes...
-  
+
     'reset' => false, // Reset Password Routes...
-  
+
     'verify' => false, // Email Verification Routes...
-  
-  ]);
+]);
 
+// route group middleware auth
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home.html', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home.html', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+    Route::get('/cart.html', [App\Http\Controllers\HomeController::class, 'cart'])->name('cart');
 
-Route::get('/cart.html', [App\Http\Controllers\HomeController::class, 'cart'])->name('cart');
-
+    Route::post('/checkout', [App\Http\Controllers\CheckoutController::class, 'checkout'])->name('checkout');
+});
 
 // routes/web.php
-
-Route::post('/checkout',  [App\Http\Controllers\CheckoutController::class, 'checkout'])->name('checkout');
