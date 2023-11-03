@@ -29,7 +29,7 @@
                                 <div class="col-lg-12">
                                   <br>
                                         <input type="submit" class="btn btn-primary" value="Submit">
-                                        <a  onclick="history.back()" class="btn btn-info">Cancel</a>
+                                        <a  onclick="history.back()" class="btn btn-warning">Cancel</a>
                                 </div>
                         </div>
                         </form>
