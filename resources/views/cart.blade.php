@@ -200,7 +200,7 @@
             if (!localStorage.getItem('customers')) {
                
             }
-
+            localStorage.removeItem('storedCustomers');
             localStorage.setItem('customers', JSON.stringify(customersData));
                 console.log('Customers data stored in local storage.');
 
