@@ -192,6 +192,25 @@
 
 
     <script>
+        var customersData = @json($customers);
+
+        localStorage.setItem('customers', JSON.stringify(customersData));
+
+        // Check if customers data is already in local storage, if not, store it
+        if (!localStorage.getItem('customers')) {
+            localStorage.setItem('customers', JSON.stringify(customersData));
+        }
+
+        // Retrieve customers from local storage
+        var storedCustomers = JSON.parse(localStorage.getItem('customers')) || [];
+
+        // Populate the dropdown
+        var dropdown = $('#myDropdown');
+        storedCustomers.forEach(function(customer) {
+            dropdown.append(new Option(customer.name + ' - ' + customer.address.substring(0, 20),
+                customer.id));
+        });
+
         $(document).ready(function() {
 
             $('#myDropdown').select2();
@@ -217,25 +236,6 @@
         });
 
         document.addEventListener("DOMContentLoaded", function() {
-
-            var customersData = @json($customers);
-
-            localStorage.setItem('customers', JSON.stringify(customersData));
-
-            // Check if customers data is already in local storage, if not, store it
-            if (!localStorage.getItem('customers')) {
-                localStorage.setItem('customers', JSON.stringify(customersData));
-            }
-
-            // Retrieve customers from local storage
-            var storedCustomers = JSON.parse(localStorage.getItem('customers')) || [];
-
-            // Populate the dropdown
-            var dropdown = $('#myDropdown');
-            storedCustomers.forEach(function(customer) {
-                dropdown.append(new Option(customer.name + ' - ' + customer.address.substring(0, 20),
-                    customer.id));
-            });
 
 
             // Check if there is a previously selected customer in localStorage
