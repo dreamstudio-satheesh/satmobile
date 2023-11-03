@@ -50,9 +50,9 @@
                 @foreach ($invoice->invoice_items as $item)
                     <tr>
                         <td>{{ $item->name }}</td>
-                        <td>₹{{ number_format($item->price, 2) }}</td>
+                        <td>{{ number_format($item->price, 2) }}</td>
                         <td>{{ number_format($item->quantity, 2) }}</td>
-                        <td>₹{{ number_format($item->quantity * $item->price, 2) }}</td>
+                        <td>{{ number_format($item->quantity * $item->price, 2) }}</td>
                     </tr>
                 @endforeach
 
