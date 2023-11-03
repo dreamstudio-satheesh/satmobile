@@ -49,7 +49,7 @@
             let formData = new FormData(event.target);
 
             // Send the form data to the server using AJAX
-            fetch('{{ route('selectline') }}', {
+            fetch('/selectline', {
                     method: 'POST',
                     body: formData,
                     headers: {
