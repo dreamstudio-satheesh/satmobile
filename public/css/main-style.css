@@ -24173,7 +24173,7 @@ hr {
   display: -ms-flexbox;
   display: flex;
   width: 50%;
-  font-size: 14px;
+  font-size: smaller;
   line-height: 1.2em;
   margin-bottom: 7px;
 }
@@ -24238,11 +24238,13 @@ hr {
 
 .receipt-table tr {
   vertical-align: baseline;
+  font-size: x-small;
 }
 
 .text-bill-list {
   list-style: none;
   padding: 8px 0;
+  font-size: x-small;
 }
 
 .text-bill-list-in {
