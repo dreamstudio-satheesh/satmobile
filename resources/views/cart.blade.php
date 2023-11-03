@@ -221,7 +221,7 @@
             // Check if there is a previously selected customer in localStorage
             var storedCustomerId = localStorage.getItem('selectedCustomerId');
             if (storedCustomerId) {
-                $('#myDropdown').val(storedCustomerId).trigger('change');
+                $('#myDropdown').val(storedCustomerId);
             }
 
             // Add an event listener to the customer select element
