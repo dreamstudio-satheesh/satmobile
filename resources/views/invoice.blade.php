@@ -33,7 +33,7 @@
             </li>
             <li class="text-right">
                 <div class="text-list-title"></div>
-                <div class="text-list-desc"></div>
+                <div class="text-list-desc"> {{ $invoice->customer->address}}</div>
             </li>
         </ul>
         <table class="receipt-table">
