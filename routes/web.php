@@ -1,21 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-route::get('/settings.html', function () {
-    return view('settings');
-})->middleware(Authenticate::class);
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\Auth\LoginController;
 
 route::get('/offline.html', function () {
     return view('offline');
@@ -25,7 +13,10 @@ route::get('/login.html', function () {
     return view('auth.login');
 });
 
-Route::get('/auth/logout', [App\Http\Controllers\Auth\LoginController::class, 'authlogout'])->name('auth.logout');
+Route::get('/settings.html', function () {
+    return view('settings');
+});
+Route::get('/auth/logout', [LoginController::class, 'authlogout'])->name('auth.logout');
 
 Auth::routes([
     'register' => false, // Register Routes...
@@ -37,16 +28,16 @@ Auth::routes([
 
 // route group middleware auth
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/home.html', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home.html', [HomeController::class, 'index'])->name('index');
 
-    Route::get('/cart.html', [App\Http\Controllers\HomeController::class, 'cart'])->name('cart');
+    Route::get('/cart.html', [HomeController::class, 'cart'])->name('cart');
 
-    Route::post('/checkout', [App\Http\Controllers\CheckoutController::class, 'checkout'])->name('checkout');
+    Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 
     // get rounte for invoice
-    Route::get('/invoice/{id}', [App\Http\Controllers\HomeController::class, 'invoice'])->name('invoice');
+    Route::get('/invoice/{id}', [HomeController::class, 'invoice'])->name('invoice');
 });
 
 // routes/web.php
