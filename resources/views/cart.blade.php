@@ -197,6 +197,7 @@
             // Check if customers data is already in local storage, if not, store it
             if (!localStorage.getItem('customers')) {
                 // Retrieve customers from the server
+                var customersData =null ;
                 var customersData = @json($customers);
                 console.log(customersData);
                 localStorage.removeItem('customers');
