@@ -12,6 +12,12 @@
                 @endforeach
             </select>
         </div>
+        <div>
+            <div class="form-group">
+                <label for="colFormLabelSm" class="col-form-label col-form-label-sm"> Bill Date</label>
+                <input  type="date" class="form-control form-control-sm" required>
+            </div>
+        </div>
     </div>
 
     <div class="container">
