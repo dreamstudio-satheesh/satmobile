@@ -61,7 +61,7 @@
 
                     // Clear selectedCustomerId and storedCustomers from local storage
                     localStorage.removeItem('selectedCustomerId');
-                    localStorage.removeItem('storedCustomers');
+                    localStorage.removeItem('customers');
 
                     // Redirect to cart.html
                     window.location.href = 'cart.html';
