@@ -225,7 +225,7 @@
             }
 
             // Add an event listener to the customer select element
-            $ $('#myDropdown').on('change', function() {
+             $('#myDropdown').on('change', function() {
                 var selectedCustomerId = $(this).val();
                 if (selectedCustomerId !== 'Select Customer') {
                     localStorage.setItem('selectedCustomerId', selectedCustomerId);
