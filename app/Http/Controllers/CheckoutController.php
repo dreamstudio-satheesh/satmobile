@@ -19,6 +19,7 @@ class CheckoutController extends Controller
         $response = [
             'message' => 'Checkout successful',
             'customerId' => $customerId,
+            'invoiceDate' => $invoice_date,
             'cartItems' => $cartItems,
         ];
 
