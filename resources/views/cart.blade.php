@@ -193,16 +193,18 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var customersData = @json($customers);
+
 
 
             // Check if customers data is already in local storage, if not, store it
             if (!localStorage.getItem('customers')) {
-               
-            }
-            localStorage.removeItem('storedCustomers');
-            localStorage.setItem('customers', JSON.stringify(customersData));
+                // Retrieve customers from the server
+                var customersData = @json($customers);
+                localStorage.setItem('customers', JSON.stringify(customersData));
                 console.log('Customers data stored in local storage.');
+
+            }
+
 
             // Retrieve customers from local storage
             var storedCustomers = JSON.parse(localStorage.getItem('customers')) || [];
@@ -226,7 +228,7 @@
 
             $('#myDropdown').select2();
 
-           
+
 
             // Add an event listener to the customer select element
             $('#myDropdown').on('change', function() {
@@ -312,7 +314,7 @@
                         // Clear the cart after successful checkout
                         clearCart();
 
-                        
+
                     })
                     .catch(function(error) {
                         // Handle any errors from the server
