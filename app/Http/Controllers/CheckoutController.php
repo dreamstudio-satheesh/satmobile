@@ -60,6 +60,7 @@ class CheckoutController extends Controller
         }
 
         $response = [
+            'invoiceId' => $invoiceId,
             'message' => 'Invoice created successful',
         ];
 

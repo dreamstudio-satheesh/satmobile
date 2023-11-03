@@ -285,6 +285,9 @@
 
                         // Clear the cart after successful checkout
                         clearCart();
+
+                        //redirect to invoice page
+                        window.location.href = '/invoice/' + data.invoiceId;
                     })
                     .catch(function(error) {
                         // Handle any errors from the server
