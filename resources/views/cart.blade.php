@@ -4,7 +4,7 @@
     <!-- Search Form-->
     <div class="container">
         <div class="search-form pt-3 rtl-flex-d-row-r">
-            <select id="myDropdown" class="form-select" aria-label="Select Customer">
+            <select id="myDropdown" class="form-control form-select" aria-label="Select Customer">
                 <option selected>Select Customer</option>
                 @foreach ($customers as $customer)
                     <option value="{{ $customer->id }}">{{ $customer->name }} - {{ Str::limit($customer->address, 20) }}
