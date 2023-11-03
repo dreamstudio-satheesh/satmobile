@@ -137,11 +137,11 @@
         <div class="receipt-top">
             <div class="company-name">SAT Sweets</div>
             <div class="company-address">3/147 Karunaipalayam Pirivu,  Covai-</div>
-            <div class="company-address">Tiruchy Main Road, Kangeyam -638701 Mobile: 90874 49924</div>
+            <div class="company-address">Tiruchy Main Road, Kangeyam -638701</div>
             <div class="company-mobile">GST NO :33ATOPR7702H1ZF</div>
         </div>
         <div class="mb-0">
-            <span class="text-uppercase text-12 bg-title text-white pa-10 d-block text-center">call fro home delivery +3254158245</span>
+            <span class="text-uppercase text-12 bg-title text-white pa-10 d-block text-center">Mobile: 90874 49924</span>
         </div>
     </main>
 
