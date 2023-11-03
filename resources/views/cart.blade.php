@@ -272,7 +272,8 @@
                     })
                     .then(async function(response) {
                         if (!response.ok) {
-                            throw new Error('Server responded with status: ' + response.statusText);
+                            throw new Error('Server responded with status: ' + response.status +
+                                ' ' + response.statusText);
                         }
 
                         // Get the response text
