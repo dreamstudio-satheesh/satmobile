@@ -42,7 +42,7 @@
                 <div class="text-list-title"> {{ $invoice->customer->name }}:</div>
                 <div class="text-list-desc">
                     @if ($invoice->customer->gstnumber)
-                        {{ $invoice->customer->gstnumber }}
+                      GST:  {{ $invoice->customer->gstnumber }}
                     @endif
                 </div>
             </li>
