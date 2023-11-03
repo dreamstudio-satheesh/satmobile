@@ -67,7 +67,9 @@ class HomeController extends Controller
 
     public function settings() 
     {
-        return view('settings');
+        $line=auth()->user()->line_id;
+        $lines = Line::where('line', $line)->get();
+        return view('settings',compact('lines'));
     }
 
 
