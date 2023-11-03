@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'line_id',
+        'user_line_id',
         'password',
         'photo'
     ];

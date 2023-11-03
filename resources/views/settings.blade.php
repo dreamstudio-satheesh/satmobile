@@ -11,8 +11,8 @@
                             <div class="form-group">
                                 <label>Select Line <span class="manitory">*</span></label>
                                 <select name="line_id" id="line" " class="form-control" >
-                                                        <option selected value="">-- Select Line --</option>
-                                                          @foreach ($lines as $line)
+                                                            <option selected value="">-- Select Line --</option>
+                                                               @foreach ($lines as $line)
                                     <option value="{{ $line->id }}">{{ $line->name }}</option>
                                     @endforeach
                                 </select>
