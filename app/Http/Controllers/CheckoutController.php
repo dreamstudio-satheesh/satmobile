@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Product;
 use App\Traits\Invoices;
+use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
