@@ -66,9 +66,6 @@ class HomeController extends Controller
         $user =Auth::user();
         $user->user_line_id = $request['line_id'];
         $user->save();
-
-        dd($user);
-
         return redirect('cart.html')->withSuccess('Updated');
         
     }
