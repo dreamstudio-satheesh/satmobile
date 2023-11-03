@@ -12,11 +12,9 @@
         <div class="search-form pt-3 rtl-flex-d-row-r">
             <select id="myDropdown" class="form-select" aria-label="Select Customer">
                 <option selected>Select Customer</option>
-                @foreach ($customers as $customer)
-                    <option value="{{ $customer->id }}">{{ $customer->name }} - {{ Str::limit($customer->address, 20) }}
-                    </option>
-                @endforeach
+                <!-- Customers will be dynamically added here using JavaScript -->
             </select>
+
         </div>
 
     </div>
@@ -195,35 +193,55 @@
 
     <script>
         $(document).ready(function() {
+
+            var customersData = @json($customers);
+
+
+
+            localStorage.setItem('customers', JSON.stringify(customersData));
+
+            // Check if customers data is already in local storage, if not, store it
+            if (!localStorage.getItem('customers')) {
+                localStorage.setItem('customers', JSON.stringify(customersData));
+            }
+
+            // Retrieve customers from local storage
+            var storedCustomers = JSON.parse(localStorage.getItem('customers')) || [];
+
+            // Populate the dropdown
+            var dropdown = $('#myDropdown');
+            storedCustomers.forEach(function(customer) {
+                dropdown.append(new Option(customer.name + ' - ' + customer.address.substring(0, 20),
+                    customer.id));
+            });
+
             $('#myDropdown').select2();
 
             // Check if there is a previously selected customer in localStorage
             var storedCustomerId = localStorage.getItem('selectedCustomerId');
-
-            // If a customer ID is stored in localStorage, select it in the dropdown
             if (storedCustomerId) {
-                $('#myDropdown').val(storedCustomerId).trigger(
-                    'change'); // Set the selected value in the dropdown and trigger change
+                $('#myDropdown').val(storedCustomerId).trigger('change');
             }
 
             // Add an event listener to the customer select element
-            $('#myDropdown').on('change', function() {
-                // Get the selected customer ID
+            $ $('#myDropdown').on('change', function() {
                 var selectedCustomerId = $(this).val();
-
-                // Check if a customer is selected (don't have value "Select Customer")
                 if (selectedCustomerId !== 'Select Customer') {
-                    // Store the selected customer ID in localStorage
                     localStorage.setItem('selectedCustomerId', selectedCustomerId);
-
                 } else {
-                    // If no customer is selected, remove the stored value
                     localStorage.removeItem('selectedCustomerId');
                 }
             });
+
+
+
         });
 
         document.addEventListener("DOMContentLoaded", function() {
+
+
+            // Check if there is a previously selected customer in localStorage
+            var storedCustomerId = localStorage.getItem('selectedCustomerId');
 
             // Set the current date in the date input
             var today = new Date();
