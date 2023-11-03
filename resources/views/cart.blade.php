@@ -203,7 +203,7 @@
             // If a customer ID is stored in localStorage, select it in the dropdown
             if (storedCustomerId) {
                 $('#myDropdown').val(storedCustomerId).trigger(
-                'change'); // Set the selected value in the dropdown and trigger change
+                    'change'); // Set the selected value in the dropdown and trigger change
             }
 
             // Add an event listener to the customer select element
@@ -256,8 +256,8 @@
 
                 // Create an object to hold the checkout data
                 var checkoutData = {
-                   // customerId: selectedCustomerId,
-                   // invoiceDate: dateInput,
+                    customerId: selectedCustomerId,
+                    invoiceDate: dateInput,
                     cartItems: cartData
                 };
 
@@ -266,24 +266,35 @@
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add the CSRF token
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
                         },
                         body: JSON.stringify(checkoutData),
                     })
-                    .then(function(response) {
-                        // Handle the server response here (e.g., display a success message)
-                        return response.json();
+                    .then(async function(response) {
+                        if (!response.ok) {
+                            throw new Error('Server responded with status: ' + response.statusText);
+                        }
+
+                        // Get the response text
+                        const text = await response.text();
+
+                        // Try to parse the text as JSON
+                        try {
+                            const data = JSON.parse(text);
+                            return data;
+                        } catch (error) {
+                            // If parsing fails, throw an error
+                            throw new Error('Invalid JSON: ' + text);
+                        }
                     })
                     .then(function(data) {
                         console.log('Checkout successful:', data);
-
-                        // Clear the cart after successful checkout
                         clearCart();
                     })
                     .catch(function(error) {
-                        // Handle any errors from the server
                         console.error('Checkout error:', error);
                     });
+
             });
         });
     </script>
