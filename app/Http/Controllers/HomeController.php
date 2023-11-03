@@ -6,6 +6,7 @@ use App\Models\Line;
 use App\Models\Invoice;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
