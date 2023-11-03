@@ -194,8 +194,6 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
 
-
-
             // Check if customers data is already in local storage, if not, store it
             if (!localStorage.getItem('customers')) {
                 // Retrieve customers from the server
@@ -203,7 +201,9 @@
                 console.log(customersData);
                 localStorage.setItem('customers', JSON.stringify(customersData));
                 console.log('Customers data stored in local storage.');
-
+            }
+            else{
+                console.log('Customers data already in local storage.');
             }
 
 
