@@ -21,11 +21,11 @@
         <ul class="text-list text-style1 mb-20">
             <li>
                 <div class="text-list-title">Date:</div>
-                <div class="text-list-desc">12/12/2023</div>
+                <div class="text-list-desc"> {{ \Carbon\Carbon::parse($invoice->date)->format('d/m/Y')}}</div>
             </li>
             <li class="text-right">
-                <div class="text-list-title">Time:</div>
-                <div class="text-list-desc">01:00</div>
+                <div class="text-list-title">INV:</div>
+                <div class="text-list-desc">#{{ str_pad($invoice->invoice_number, 4, '0', STR_PAD_LEFT) }}/23-24</div>
             </li>
             <li>
                 <div class="text-list-title"> {{ $invoice->customer->name}}:</div>
@@ -33,7 +33,7 @@
             </li>
             <li class="text-right">
                 <div class="text-list-title"></div>
-                <div class="text-list-desc">#{{ str_pad($invoice->invoice_number, 4, '0', STR_PAD_LEFT) }}/23-24</div>
+                <div class="text-list-desc"></div>
             </li>
         </ul>
         <table class="receipt-table">
@@ -42,16 +42,16 @@
                     <th>Name</th>
                     <th>Price</th>
                     <th>Qty</th>
-                    <th>Total</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($invoice->invoice_items as $item)
                 <tr>
-                    <td>Beverages</td>
-                    <td>$10</td>
-                    <td>3</td>
-                    <td>$10</td>
+                    <td>{{ $item->name }}</td>
+                    <td>₹{{ number_format($item->price ,2) }}</td>
+                    <td>{{ $item->quantity }}</td>
                 </tr>
+                @endforeach
               
             </tbody>
         </table>
