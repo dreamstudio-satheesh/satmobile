@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 class CheckoutController extends Controller
 {
     public function checkout(Request $request)
-    {
-        return response()->json(['message' => 'Checkout successful']);
-        
+    {        
         // Retrieve the customer ID and cart items from the request
         $customerId = $request->input('customerId');
         $invoice_date= $request->input('invoiceDate');
