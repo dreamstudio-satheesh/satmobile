@@ -203,7 +203,7 @@
             // If a customer ID is stored in localStorage, select it in the dropdown
             if (storedCustomerId) {
                 $('#myDropdown').val(storedCustomerId).trigger(
-                'change'); // Set the selected value in the dropdown and trigger change
+                    'change'); // Set the selected value in the dropdown and trigger change
             }
 
             // Add an event listener to the customer select element
@@ -253,6 +253,12 @@
 
                 // Retrieve the cart data from local storage
                 var cartData = JSON.parse(localStorage.getItem('cart')) || {};
+
+                // Check if cartData is empty
+                if (Object.keys(cartData).length === 0) {
+                    alert("Please select an item first.");
+                    return;
+                }
 
                 // Create an object to hold the checkout data
                 var checkoutData = {
