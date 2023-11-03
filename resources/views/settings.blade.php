@@ -5,7 +5,7 @@
       <div class="card">
         <div class="card-body">
                 <div class="row">
-                        <form action="{{ route('selectline') }}" method="post">
+                        <form id="settingsForm" action="{{ route('selectline') }}" method="post">
                                 @csrf
                         <div class="col-lg-4 col-sm-6 col-12">
                                 <div class="form-group">
@@ -38,3 +38,15 @@
 </div>
     </div>
 @endsection
+
+@push('scripts')
+
+<script>
+  document.getElementById('settingsForm').addEventListener('submit', function() {
+    // Clear selectedCustomerId and storedCustomers from local storage
+    localStorage.removeItem('selectedCustomerId');
+    localStorage.removeItem('storedCustomers');
+});
+</script>
+
+@endpush
