@@ -83,7 +83,7 @@ class HomeController extends Controller
 
     public function cart()
     {
-       dd(auth()->user());
+       dd(auth()->user()->hasRole('user'));
        
         if(auth()->user()->hasRole('user') && auth()->user()->user_line_id){
                       
