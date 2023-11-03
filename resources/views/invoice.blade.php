@@ -42,6 +42,7 @@
                     <th>Name</th>
                     <th>Price</th>
                     <th>Qty</th>
+                    <th>Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,7 +50,8 @@
                 <tr>
                     <td>{{ $item->name }}</td>
                     <td>₹{{ number_format($item->price ,2) }}</td>
-                    <td>{{ $item->quantity }}</td>
+                    <td>{{ number_format($item->quantity,2) }}</td>
+                    <td>₹{{ number_format($item->quantity * $item->price,2) }}</td>
                 </tr>
                 @endforeach
               

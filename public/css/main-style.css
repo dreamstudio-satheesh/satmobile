@@ -24217,6 +24217,7 @@ hr {
 
 .receipt-table tbody tr:first-child td {
   padding-top: 10px;
+  font-size: smaller;
 }
 
 .receipt-table tbody tr:last-child td {
