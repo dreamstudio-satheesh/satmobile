@@ -14,8 +14,8 @@
         </div>
         <div>
             <div class="form-group">
-                <label for="colFormLabelSm" class="col-form-label col-form-label-sm"> Bill Date</label>
-                <input  type="date" class="form-control form-control-sm" required>
+                
+                <input  type="date" id="dateInput" class="form-control form-control-sm" required>
             </div>
         </div>
     </div>
@@ -222,6 +222,18 @@
 });
 
 document.addEventListener("DOMContentLoaded", function() {
+
+    // Set the current date in the date input
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById('dateInput').value = today;
+
+
     // Event listener for the "Checkout Now" button
     document.getElementById('checkoutButton').addEventListener('click', function(event) {
         event.preventDefault();
