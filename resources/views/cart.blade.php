@@ -212,7 +212,7 @@
                             populateDropdown(customersData);
                         },
                         error: function(error) {
-                            console.error("Error fetching customers:", error);
+                            console.error('Failed to fetch resource for URL:', url, 'Error:', error);
                         }
                     });
                 } else {
