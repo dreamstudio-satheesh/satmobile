@@ -266,9 +266,6 @@
         document.addEventListener("DOMContentLoaded", function() {
 
 
-            // Check if there is a previously selected customer in localStorage
-            var storedCustomerId = localStorage.getItem('selectedCustomerId');
-
             // Set the current date in the date input
             var today = new Date();
             var dd = String(today.getDate()).padStart(2, '0');
