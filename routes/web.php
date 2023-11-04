@@ -38,7 +38,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/settings.html', [HomeController::class, 'settings'])->name('settings');
     Route::post('/selectline', [HomeController::class, 'selectline'])->name('selectline');
-    Route::post('/selectcustomer', [HomeController::class, 'selectcustomer'])->name('selectcustomer');
+    Route::get('/selectcustomer', [HomeController::class, 'selectcustomer'])->name('selectcustomer');
 });
 
 // routes/web.php
