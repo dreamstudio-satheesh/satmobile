@@ -194,36 +194,50 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
 
-            // Check if customers data is already in local storage, if not, store it
-            if (!localStorage.getItem('customers')) {
-                // Retrieve customers from the server
-                var customersData =null ;
-                var customersData = @json($customers);
-                console.log(customersData);
-                localStorage.removeItem('customers');
-                localStorage.setItem('customers', JSON.stringify(customersData));
-                console.log('Customers data stored in local storage.');
-            }
-            else{
-                console.log('Customers data already in local storage.');
-            }
+            document.addEventListener("DOMContentLoaded", function() {
 
+                // Check if customers data is already in local storage, if not, store it
+                if (!localStorage.getItem('customers')) {
+                    // Retrieve customers from the server using AJAX
+                    $.ajax({
+                        url: 'https://mobile.satsweets.com/getcustomers',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(customersData) {
+                            console.log(customersData);
+                            localStorage.removeItem('customers');
+                            localStorage.setItem('customers', JSON.stringify(customersData));
+                            console.log('Customers data stored in local storage.');
 
-            // Retrieve customers from local storage
-            var storedCustomers = JSON.parse(localStorage.getItem('customers')) || [];
+                            populateDropdown(customersData);
+                        },
+                        error: function(error) {
+                            console.error("Error fetching customers:", error);
+                        }
+                    });
+                } else {
+                    console.log('Customers data already in local storage.');
+                    var storedCustomers = JSON.parse(localStorage.getItem('customers')) || [];
+                    populateDropdown(storedCustomers);
+                }
 
-            // Populate the dropdown
-            var dropdown = $('#myDropdown');
-            storedCustomers.forEach(function(customer) {
-                dropdown.append(new Option(customer.name + ' - ' + customer.address.substring(0, 20),
-                    customer.id));
+                // Check if there is a previously selected customer in localStorage
+                var storedCustomerId = localStorage.getItem('selectedCustomerId');
+                if (storedCustomerId) {
+                    $('#myDropdown').val(storedCustomerId); // Set the value as selected in the dropdown
+                }
+
+                function populateDropdown(customers) {
+                    // Populate the dropdown
+                    var dropdown = $('#myDropdown');
+                    customers.forEach(function(customer) {
+                        dropdown.append(new Option(customer.name + ' - ' + customer.address
+                            .substring(0, 20),
+                            customer.id));
+                    });
+                }
             });
 
-            // Check if there is a previously selected customer in localStorage
-            var storedCustomerId = localStorage.getItem('selectedCustomerId');
-            if (storedCustomerId) {
-                $('#myDropdown').val(storedCustomerId); // Set the value as selected in the dropdown
-            }
         });
 
 

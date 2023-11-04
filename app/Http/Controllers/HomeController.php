@@ -30,6 +30,27 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    
+
+    public function selectcustomer() {
+        if (Auth::user()->hasRole('user') && Auth::user()->user_line_id) {
+            $customers = Customer::select('id', 'name', 'address')
+                ->where('line_id', Auth::user()->user_line_id)
+                ->get();
+            return ($customers);
+        } elseif (Auth::user()->hasRole('user') && Auth::user()->line_id) {
+            $lines = Line::where('line', Auth::user()->line_id)
+                ->select('id')
+                ->get()
+                ->toArray();
+            $customers = Customer::select('id', 'name', 'address')->whereIn('line_id', $lines)->get();
+        } else {
+            $customers = Customer::select('id', 'name', 'address')->get();
+        }
+
+        // Return a JSON response instead of a redirect
+        return response()->json(['customers' => $customers], Response::HTTP_OK);
+    }
 
     public function invoice($id)
     {
@@ -85,21 +106,6 @@ class HomeController extends Controller
 
     public function cart()
     {
-        if (Auth::user()->hasRole('user') && Auth::user()->user_line_id) {
-            $customers = Customer::select('id', 'name', 'address')
-                ->where('line_id', Auth::user()->user_line_id)
-                ->get();
-            return ($customers);
-        } elseif (Auth::user()->hasRole('user') && Auth::user()->line_id) {
-            $lines = Line::where('line', Auth::user()->line_id)
-                ->select('id')
-                ->get()
-                ->toArray();
-            $customers = Customer::whereIn('line_id', $lines)->get();
-        } else {
-            $customers = Customer::all();
-        }
-
-        return view('cart', compact('customers'));
+        return view('cart');
     }
 }
