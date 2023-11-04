@@ -200,7 +200,7 @@
                 if (!localStorage.getItem('customers')) {
                     // Retrieve customers from the server using AJAX
                     $.ajax({
-                        url: 'https://mobile.satsweets.com/getcustomers',
+                        url: 'https://mobile.satsweets.com/selectcustomer',
                         type: 'GET',
                         dataType: 'json',
                         success: function(customersData) {
