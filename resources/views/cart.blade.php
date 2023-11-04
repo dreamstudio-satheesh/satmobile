@@ -201,7 +201,11 @@
                     // Retrieve customers from the server using AJAX
                     $.ajax({
                         url: 'https://mobile.satsweets.com/selectcustomer',
-                        type: 'GET',
+                        type: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add the CSRF token
+                        },
                         dataType: 'json',
                         success: function(customersData) {
                             console.log(customersData);
@@ -212,7 +216,7 @@
                             populateDropdown(customersData);
                         },
                         error: function(error) {
-                            console.error('Failed to fetch resource for URL:', url, 'Error:', error);
+                            console.error('Failed to fetch resource for URL:', error);
                         }
                     });
                 } else {
