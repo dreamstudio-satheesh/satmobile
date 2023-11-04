@@ -194,8 +194,6 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
 
-            document.addEventListener("DOMContentLoaded", function() {
-
                 // Check if customers data is already in local storage, if not, store it
                 if (!localStorage.getItem('customers')) {
                     // Retrieve customers from the server using AJAX
@@ -242,7 +240,7 @@
                 }
             });
 
-        });
+     
 
 
         $(document).ready(function() {
