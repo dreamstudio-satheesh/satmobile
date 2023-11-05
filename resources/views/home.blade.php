@@ -44,7 +44,7 @@
                         // Handle adding the product to the cart or perform any other actions
 
                         // Get the current cart from localStorage (if it exists)
-                        var cart = JSON.parse(localStorage.getItem('cart')) || {};
+                        var cart = JSON.parse(localStorage.getItem('cart')) ||  [];
                         
                          // Check if the product already exists in the cart
                         var existingProductIndex = cart.findIndex(item => item.id === productId);
