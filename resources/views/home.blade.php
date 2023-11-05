@@ -42,16 +42,20 @@
 
 
                         // Handle adding the product to the cart or perform any other actions
+
                         // Get the current cart from localStorage (if it exists)
                         var cart = JSON.parse(localStorage.getItem('cart')) || {};
-                        // Check if the product already exists in the cart
-                        if (cart.hasOwnProperty(productId)) {
+                        
+                         // Check if the product already exists in the cart
+                        var existingProductIndex = cart.findIndex(item => item.id === productId);
+
+                        if (existingProductIndex !== -1) {
                             // Product already exists, increase the quantity
-                            cart[productId].quantity += productQuantity;
+                            cart[existingProductIndex].quantity += productQuantity;
                         } else {
-                            // Product does not exist, add the product
-                            cart[productId] = product;
-                        }
+                            // Product does not exist, add the product to the end of the array
+                            cart.push(product);
+                        }                       
 
                         // Save the cart to localStorage
                         localStorage.setItem('cart', JSON.stringify(cart));
